@@ -9,7 +9,7 @@ import { HStack, VStack ,Text, Divider, Box, Grid ,Button ,IconButton} from '@ch
 
 const Footer = () => {
   return (
-    <Box width={"100%"} className='footer'backgroundColor={["#0A2647" ,"#256D85" ,"#256D85"]}  color={"#DFF6FF"}>
+    <Box width={"100%"} className='footer'backgroundColor={["#256D85" ,"#256D85" ,"#256D85"]}  color={"#DFF6FF"}>
 
        <Divider/>
        <h1>LET'S STAY IN TOUCH</h1>
