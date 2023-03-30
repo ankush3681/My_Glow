@@ -1,67 +1,57 @@
 // Saurabh
+import React from "react";
 
-import {
-  Button,
-  Checkbox,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Link,
-  Stack,
-  Image,
-} from "@chakra-ui/react";
+const Login = () => {
+  const [loginUser, setLoginUser] = React.useState({
+    email: "",
+    password: "",
+    name: "",
+  });
+  const verifyLogin = async (e) => {
+    e.preventDefault();
+    try {
+      let usersData = await fetch(`https://api-ak.vercel.app/users`);
+      let data = await usersData.json();
+      for (let i = 0; i <= data.length - 1; i++) {
+        if (
+          loginUser.email === data[i].email &&
+          loginUser.password === data[i].password
+        ) {
+          alert(`Welcome Back ${data[i].name}`);
+          return;
+        }
+      }
+      alert("Login Error");
+    } catch (error) {
+      console.log("error ", error);
+    }
+  };
+  return (
+    <div>
+      <h1>Login page</h1>
+      <form onSubmit={verifyLogin}>
+        <input
+          onChange={(e) =>
+            setLoginUser({ ...loginUser, email: e.target.value })
+          }
+          required
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+        />
+        <input
+          onChange={(e) =>
+            setLoginUser({ ...loginUser, password: e.target.value })
+          }
+          required
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+        />
+        <button onSubmit="submit">Submit now</button>
+      </form>
+    </div>
+  );
+};
 
-  import { useNavigate } from "react-router-dom";
-  
-  function Login() {
-    const navigate = useNavigate();
-    return (
-      <Stack
-        minH={"100vh"}
-        direction={{ base: "column", md: "row" }}
-        backgroundColor="#f2f2f2 "
-      >
-        <Flex p={8} flex={1} align={"center"} justify={"center"}>
-          <Stack spacing={4} w={"full"} maxW={"md"}>
-            <Heading fontSize={"2xl"}>Sign in to your account</Heading>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={6}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.500"}>Forgot password?</Link>
-              </Stack>
-              <Button
-                colorScheme={"blue"}
-                variant={"solid"}
-                onClick={() => navigate("/")}
-              >
-                Sign in
-              </Button>
-            </Stack>
-          </Stack>
-        </Flex>
-        <Flex flex={1}>
-          <Image
-            alt={"Login Image"}
-            objectFit={"cover"}
-            src={"C:\Users\Saurabh Shambharkar\OneDrive\Desktop\Unit-5-Project\noisy-mailbox-2939\my-glow\src\logo.svg"}
-          />
-        </Flex>
-      </Stack>
-    );
-  }
-  
-  export default Login;
+export default Login;
