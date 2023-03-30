@@ -1,8 +1,60 @@
 .f-nav{
     border: 1px solid red;
     width: 100%;
+    background-color:  #E11299;
+    color: #060047;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.logocss{
+    margin: 10px;
+    width: 150px;
+    border-radius: 10px 0px 10px 0px;
+  
+}
+.search-box{
+    border: 1px solid black;
+    width: 40%;
+    display: flex;
+    border-radius: 10px;
+}
+.search-box input{
+    width: 90%;
+    padding: 10px;
+    border : 0px solid red;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #DFF6FF;
+}
+.search-box input:focus{
+   background-color: #c3e6f4;
+   outline: none;
+}
+.search-box button{
+    background-color: #FF5F9E;
+    border-radius: 0px 10px 10px 0px;
+    width: 10%;
+    padding : 10px;
+}
+.icon-box{
+    display: flex;
+    width:30%;
+    justify-content: space-evenly;
 }
 .s-nav{
     border:1px solid black;
+    background-color: #E90064;
     width: 100%;
+}
+
+.s-nav ul{
+    font-size: medium;
+    font-weight: 490;
+    display: flex;
+    justify-content: space-evenly;
+}
+.s-nav ul li{
+    border: 2px solid #E11299;
+    list-style-type: none;
+    padding: 10px 20px;
 }
