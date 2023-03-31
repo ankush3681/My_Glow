@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import {useDispatch} from "react-redux"
 import {
   Center,
   Heading,
@@ -15,6 +17,7 @@ import {
   RadioGroup,
   Button
 } from "@chakra-ui/react";
+import { postProduct } from "../Redux/productReducer/action";
 
 const initialState = {
   image1:"",
@@ -32,6 +35,7 @@ const initialState = {
 export const Admin = () => {
  
   const [state,setState] = useState(initialState)
+  const dispatch = useDispatch()
 
 
   const handleChange = (e)=>{
@@ -42,7 +46,7 @@ export const Admin = () => {
  
   const handleSubmit = (e)=>{
     e.preventDefault()
-    console.log("invoked")
+     dispatch(postProduct(state))
     setState(initialState)
   }
 
