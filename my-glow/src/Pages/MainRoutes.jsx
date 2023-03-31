@@ -7,7 +7,12 @@ import { Admin } from './Admin';
 import GlowProduct from './GlowProducts';
 import {ProductDetail} from './ProductDetail';
 import Cart from './Cart';
+
 import {Payment} from './Payment';
+
+
+import { EditDeletePage } from './EditDeletePage';
+
 
 const MainRoutes = () => {
   return (
@@ -20,6 +25,7 @@ const MainRoutes = () => {
       <Route path="/product/:id" element={<ProductDetail/>}></Route>
       <Route path="/payment" element={<Payment/>}></Route>
       <Route path="/cart" element={<Cart/>}></Route>
+      <Route path='/edit' element={<EditDeletePage/>}></Route>
     </Routes>
   )
 }
