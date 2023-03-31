@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import "./Navbar.css"
 import img1 from '../images/my-glow-logo.jpg'
+import img2 from '../images/logo3my.jpg'
+import img3 from '../images/logo4my.jpg'
 import { BsSearch ,BsHandbagFill ,BsPersonCircle} from "react-icons/bs";
 import { Show, Hide } from '@chakra-ui/react'
 
@@ -10,7 +12,7 @@ const Navbar = () => {
   return (
    <Box >
       <Box className='f-nav mob-nav'>
-            <Box className='logobox' > <img src={img1}className='logocss' alt="" /></Box>
+            <Box className='logobox' > <img src={img2}className='logocss' alt="" /></Box>
    
            <Box className='search-box1'>
               <input type="text" placeholder='Try"Liquid Lipstick"' /> <button><img width={"40px"} src="https://img.icons8.com/ios/x/search.png" alt="" /></button>
