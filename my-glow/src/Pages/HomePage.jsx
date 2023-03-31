@@ -27,7 +27,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar />
       <Box className='carousel1-home'>
       <Carousel/>
       </Box>
@@ -66,7 +65,6 @@ const HomePage = () => {
       <Box display={'flex'} alignItems='center' margin={'auto'} marginLeft='30%'><Line/><Text fontSize='3xl' padding={'10px'} >NEWLY LAUNCHED</Text><Line/></Box>
       
       <Carousel1/>
-      <Footer/>
     </div>
   )
 }
