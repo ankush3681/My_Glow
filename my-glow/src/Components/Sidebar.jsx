@@ -134,7 +134,7 @@ const Sidebar = () => {
               <Text _hover={p1} className="rating">
                 <input type="checkbox" /> 3
                 <Tag bg="white">
-                  <AiTwotoneStar color="red" />
+                  <AiTwotoneStar color="red"/>
                 </Tag>
                 & above
               </Text>
