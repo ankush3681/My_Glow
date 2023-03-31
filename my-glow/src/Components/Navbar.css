@@ -1,40 +1,73 @@
 .f-nav{
-    border: 1px solid red;
+    position: fixed;
+    top: 0;
+    z-index: 999;
     width: 100%;
     background-color:  #E11299;
     color: #060047;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .logocss{
     margin: 10px;
-    width: 150px;
+    margin-left: -20px;
+    width: 120px;
     border-radius: 10px 0px 10px 0px;
-  
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.search-box{
+.search-box1{
     border: 1px solid black;
     width: 40%;
     display: flex;
     border-radius: 10px;
+    height: 40px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.search-box input{
+.search-box1 input{
     width: 90%;
-    padding: 10px;
+    padding: 8px;
     border : 0px solid red;
     border-radius: 10px 0px 0px 10px;
     background-color: #DFF6FF;
 }
-.search-box input:focus{
+.search-box1 input:focus{
    background-color: #c3e6f4;
    outline: none;
 }
-.search-box button{
+.search-box1 button{
     background-color: #FF5F9E;
     border-radius: 0px 10px 10px 0px;
     width: 10%;
     padding : 10px;
+   
+}
+.search-box2{
+    border: 1px solid black;
+    width: 40%;
+    display: flex;
+    border-radius: 10px;
+    height: 40px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.search-box2 input{
+    width: 90%;
+    padding: 8px;
+    border : 0px solid red;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #DFF6FF;
+}
+.search-box2 input:focus{
+   background-color: #c3e6f4;
+   outline: none;
+}
+.search-box2 button{
+    background-color: #FF5F9E;
+    border-radius: 0px 10px 10px 0px;
+    width: 10%;
+    padding : 10px;
+   
 }
 .icon-box{
     display: flex;
@@ -42,19 +75,87 @@
     justify-content: space-evenly;
 }
 .s-nav{
-    border:1px solid black;
+    position: fixed;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     background-color: #E90064;
     width: 100%;
+    top: 61px;
+    z-index: 999;
 }
 
 .s-nav ul{
     font-size: medium;
     font-weight: 490;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 .s-nav ul li{
-    border: 2px solid #E11299;
+    border: 0px solid #E11299;
+    border-radius: 6px;
     list-style-type: none;
     padding: 10px 20px;
+    transition: border-bottom-width 1s;
+    border-bottom-width: 1px;
+
 }
+.s-nav>ul>li:hover{
+    border-bottom: 2px solid #1292e1 ;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-bottom-width: 4px;
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .search-box1{
+        display: none;
+    }
+    .search-box2{
+        display:flex;
+        width: 90%;
+        margin: auto;
+        top:100px
+
+    }
+    .logocss{
+        margin: 10px;
+        width: 100px;
+        border-radius: 10px 0px 10px 0px;
+      
+    }
+    .mob-nav{
+        width: 100%;
+    }
+    .s-nav ul{
+        width: 100%;
+    }
+    .s-nav ul li{
+      padding: 5px;
+    }
+    .s-nav{
+     top: 58px;
+    }
+    .icon-box{
+        width: 70%;
+    }
+    .icon-box img{
+        width: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .mob-nav{
+        width: 100%;
+    }
+    .s-nav ul{
+       display: none;
+    }
+    .logocss{
+        margin: 10px;
+        width: 80px;
+        border-radius: 10px 0px 10px 0px;
+      
+    }
+  }

@@ -4,7 +4,7 @@ import { Routes,Route } from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
 import { Admin } from './Admin';
-import GlowProduct from './GlowProduct';
+import GlowProduct from './GlowProducts';
 import ProductDetail from './ProductDetail';
 import Cart from './Cart';
 import Payment from './Payment';
