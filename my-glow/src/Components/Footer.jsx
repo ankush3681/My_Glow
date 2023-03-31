@@ -9,7 +9,7 @@ import { HStack, VStack ,Text, Divider, Box, Grid ,Button ,IconButton} from '@ch
 
 const Footer = () => {
   return (
-    <Box width={"100%"} className='footer'backgroundColor={["#256D85" ,"#256D85" ,"#256D85"]}  color={"#DFF6FF"}>
+    <Box width={["100%" ,"100%"]} className='footer' background={"linear-gradient(172deg, rgba(2,0,36,1) 0%, rgba(197,84,192,1) 0%, rgba(255,46,173,1) 33%, rgba(0,212,255,1) 100%)"}>
 
        <Divider/>
        <h1>LET'S STAY IN TOUCH</h1>
@@ -72,8 +72,8 @@ const Footer = () => {
                         <Text>Tap into a better shopping experience.</Text>
                     </VStack>
                     <HStack>
-                        <img width="200px" src="https://in.sugarcosmetics.com/playstore.png" alt="" />
-                        <img width="200px" src="https://in.sugarcosmetics.com/apple-store.png" alt="" />
+                        <img width={["200px" , "100px"]} src="https://in.sugarcosmetics.com/playstore.png" alt="" />
+                        <img width={["200px" , "100px"]} src="https://in.sugarcosmetics.com/apple-store.png" alt="" />
                     </HStack>
                 </Grid>    
         <Divider/>
