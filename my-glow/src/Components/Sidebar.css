@@ -1,0 +1,31 @@
+.category{
+    padding:1%;
+    font-size:xl;
+    text-align:left;
+    border-bottom: 1px dotted pink;
+}
+/* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px; */
+
+
+.brand{
+ padding:1%;
+ border-bottom: 1px dotted pink;   font-size:xl;
+  text-align:left;
+}
+
+.rating{
+ padding:1%;
+ border-bottom: 1px dotted pink;   font-size:xl;
+  text-align:left;
+}
+
+.price{
+ padding:1%;
+ border-bottom: 1px dotted pink;   font-size:xl;
+  text-align:left;
+}
+
+
+
+
+
