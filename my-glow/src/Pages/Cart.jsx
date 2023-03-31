@@ -1,151 +1,90 @@
-import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Box,
+  Flex,
+  Heading,
+  Spacer,
+  Text,
+  Button,
+  Image,
+  CloseButton,
+} from '@chakra-ui/react';
+
+
+
+import { removeFromCart,incrementQuantity,decrementQuantity } from '../Redux/cartReducer/action';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const  cartItems  = useSelector((store) =>{
+    console.log(store)
+    return store.cartReducer;
+  });
+  console.log('cartItems:', cartItems)
+
+  // const total = cartItems.reduce(
+  //   (acc, item) => acc + +item.price * item.quantity,
+  //   0
+  // );
+  // console.log(total)
+
   return (
-    <div>Prashant</div>
-  )
-}
+    <Box p={4}>
+      <Heading as="h1" size="lg" mb={4}>
+        Your Cart
+      </Heading>
 
-export default Cart
+      {cartItems?.length > 0 ? (
+        <>
+          {cartItems?.map((item) => (
+            <Flex key={item.id} alignItems="center" mb={4}>
+              <Image src={item.image1} alt={item.name} boxSize="150px" />
 
+              <Box ml={4} flex={1}>
+                <Text fontSize="xl" fontWeight="bold">
+                  {item.category}
+                </Text>
+                <Text fontSize="md" color="gray.500">
+                  {item.price} R
+                </Text>
 
+                <Flex alignItems="center" mt={2}>
+                  <Button
+                    size="sm"
+                    onClick={() => dispatch(decrementQuantity(item.id))}
+                  >
+                    -
+                  </Button>
+                  <Text mx={2}>{item.quantity}</Text>
+                  <Button
+                    size="sm"
+                    onClick={() => dispatch(incrementQuantity(item.id))}
+                  >
+                    +
+                  </Button>
 
-// import React, { createContext, useReducer, useEffect } from "react";
-// import "./cart.css";
-// // import { products } from "./products";
-// import ContextCart from "./ContextCart";
-// import { reducer } from "./reducer";
+                  <Spacer />
 
-// export const CartContext = createContext();
+                  <CloseButton
+                    onClick={() => dispatch(removeFromCart(item.id))}
+                  />
+                </Flex>
+              </Box>
+            </Flex>
+          ))}
 
-// let products = [
-//   {
-//     id: 1,
-//     title: "Samsung S21",
-//     description: "black in color",
-//     price: "2500",
-//     img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//     quantity: 1,
-//   },
-//   {
-//     id: 2,
-//     title: "Samsung M21",
-//     description: "white in color",
-//     price: "2300",
-//     img: "https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//     quantity: 1,
-//   },
-//   {
-//     id: 3,
-//     title: "Redmi 9",
-//     description: "black in color",
-//     price: "3500",
-//     img: "https://images-na.ssl-images-amazon.com/images/I/71A9Vo1BatL._SL1500_.jpg",
-//     quantity: 1,
-//   },
-//   {
-//     id: 4,
-//     title: "Iphone 12",
-//     description: "Best mobile ever",
-//     price: "90500",
-//     img: "https://images-na.ssl-images-amazon.com/images/I/71hIfcIPyxS._SL1500_.jpg",
-//     quantity: 1,
-//   },
-//   {
-//     id: 5,
-//     title: "Samsung S21",
-//     description: "black in color",
-//     price: "2500",
-//     img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//     quantity: 1,
-//   },
-//   {
-//     id: 6,
-//     title: "Redmi 9",
-//     description: "black in color",
-//     price: "3500",
-//     img: "https://images-na.ssl-images-amazon.com/images/I/71A9Vo1BatL._SL1500_.jpg",
-//     quantity: 1,
-//   },
-//   {
-//     id: 7,
-//     title: "Samsung S21",
-//     description: "black in color",
-//     price: "2500",
-//     img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//     quantity: 1,
-//   },
-//   {
-//     id: 8,
-//     title: "Iphone 12",
-//     description: "Best mobile ever",
-//     price: "90500",
-//     img: "https://images-na.ssl-images-amazon.com/images/I/71hIfcIPyxS._SL1500_.jpg",
-//     quantity: 1,
-//   },
-//   {
-//     id: 9,
-//     title: "Samsung S21",
-//     description: "black in color",
-//     price: "2500",
-//     img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//     quantity: 1,
-//   },
-// ];
+          <Flex justifyContent="flex-end" mt={8}>
+            <Box>
+              <Text fontWeight="bold">Total:</Text>
+              {/* <Text fontSize="xl">{total} USD</Text> */}
+            </Box>
+          </Flex>
+        </>
+      ) : (
+        <Text>Your cart is empty</Text>
+      )}
+    </Box>
+  );
+};
 
-
-// const initialState = {
-//   item: products,
-//   totalAmount: 0,
-//   totalItem: 0,
-// };
-// // console.log(products)
-
-// const Cart = () => {
-//   // const [item, setItem] = useState(products);
-//   const [state, dispatch] = useReducer(reducer, initialState);
-
-//   // to delete the indv. elements from an Item Cart
-//   const removeItem = (id) => {
-//     return dispatch({
-//       type: "REMOVE_ITEM",
-//       payload: id,
-//     });
-//   };
-
-//   // clear the cart
-//   const clearCart = () => {
-//     return dispatch({ type: "CLEAR_CART" });
-//   };
-
-//   // increment the item
-//   const increment = (id) => {
-//     return dispatch({
-//       type: "INCREMENT",
-//       payload: id,
-//     });
-//   };
-
-//   // decrement the item
-//   const decrement = (id) => {
-//     return dispatch({
-//       type: "DECREMENT",
-//       payload: id,
-//     });
-//   };
-
-//   // we will use the useEffect to update the data
-//   useEffect(() => {
-//     dispatch({ type: "GET_TOTAL" });
-//     // console.log("Awesome");
-//   }, [state.item]);
-
-//   return (
-//     <CartContext.Provider
-//       value={{ ...state, removeItem, clearCart, increment, decrement }}>
-//       <ContextCart />
-//     </CartContext.Provider>
-//   );
-// };
-
-// export default Cart;
+export default Cart;
