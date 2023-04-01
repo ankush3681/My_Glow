@@ -63,3 +63,17 @@ export const patchProduct = (id,data)=> async (dispatch)=>{
   }).catch((err)=>console.log(err))
 
 }
+
+
+export const get_editedProducts =  (dispatch) =>{
+  dispatch({type:PRODUCTREQUESTSTATUS})
+axios.get(`https://glow-6s9y.onrender.com/myglow`)  
+.then((res)=>{
+   // console.log(res.data);
+   dispatch({type:GETPRODUCTSUCCESSSSTATUS,payload:res.data})
+})
+.catch(()=>{
+  dispatch({type:PRODUCTFAILEDSTATUS})
+})
+}
+
