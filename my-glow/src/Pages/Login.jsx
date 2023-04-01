@@ -62,7 +62,7 @@ const Login = () => {
           required
           type="email"
           name="email"
-          placeholder="Enter your email"
+          placeholder="Enter your email"git 
         />
         <input
           color={"#e8f0fe"}

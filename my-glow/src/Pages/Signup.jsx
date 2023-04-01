@@ -88,7 +88,6 @@ const Signup = () => {
           >
           Submit
         </Button>
-
         {/* <Button
         ml={"30%"}
        w={'600px'}
