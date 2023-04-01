@@ -1,16 +1,15 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY } from "./actionType";
 
 export const addToCart = (item) => {
+  // console.log(item)
   return {
+   
     type: ADD_TO_CART,
     payload: item,
   };
 };
 
-//const addToCart=(item)=>(dispatch)=>{
- //   dispatch(type:ADD_TO_CART,payload:item)
-//}
-//
+
 export const removeFromCart = (id) => {
   return {
     type: REMOVE_FROM_CART,

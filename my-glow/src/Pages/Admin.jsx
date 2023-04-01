@@ -32,7 +32,7 @@ const initialState = {
 
 }
 
-export const Admin = () => {
+ const Admin = () => {
  
   const [state,setState] = useState(initialState)
   const dispatch = useDispatch()
@@ -172,3 +172,5 @@ export const Admin = () => {
     </>
   );
 };
+
+export default Admin;
