@@ -5,7 +5,7 @@ import Sidebar from '../Components/Sidebar'
 
 const Myglow = () => {
   return (
-    <Box>
+    <Box mt="5%">
       <Image w="90%" m="auto" my="1rem" src="https://d32baadbbpueqt.cloudfront.net/Collection/6fca01a2-8f3f-465b-a29b-7933fe0d4ccc.jpg"/>
     <Flex p="2rem">
       <Sidebar/>

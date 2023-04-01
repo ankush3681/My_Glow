@@ -1,23 +1,26 @@
-import { Box, Heading, Image, Text, Tag, Grid, Button,Flex, Spacer,useToast } from "@chakra-ui/react";
+import { Box, Heading, Image, Text, Tag, Grid, Button,Flex, Spacer,useToast,Center } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,useSearchParams,useLocation } from "react-router-dom";
 import { get_products } from "../Redux/productReducer/action";
-import { BsStarHalf,BsCart4,BsCart2 } from "react-icons/bs";
+import { BsStarHalf,BsCart4 } from "react-icons/bs";
 import { addToCart } from "../Redux/cartReducer/action";
 
 const Products = () => {
-    const [cartIcon,setCartIcon] = useState(false);
+    const [searchParam] = useSearchParams();
+    const location = useLocation();
     const [page,setPage] = useState(1);
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const { products } = useSelector((state) => {
     // console.log(state.productReducer.products);
     return state.productReducer;
   });
   const toast = useToast();
 
+
   const handleCart = (item) =>{
        setCartIcon(prev => !prev)
+
 
        toast({
         position:'top',
@@ -33,17 +36,27 @@ const Products = () => {
      
   }
 
+  const postObj = {
+    params : {
+      category:searchParam.getAll("category"),
+      brand:searchParam.getAll("brand"),
+      price:searchParam.getAll("price"),
+      // sort:searchParam.get("price") && "price",
+      // _order:searchParam.get("order"),
+    }
+  }
+
   let count=false;
 
   useEffect(() => {
-    dispatch(get_products);
-  }, []);
+    dispatch(get_products(postObj));
+  }, [location.search]);
   return (
     <Box w="70%" ml="4rem">
     <Box  >
-      <Heading color="red" mb={"5%"}>
-        Glow with my glow
-      </Heading>
+      <Center color="red" mb={"5%"}>
+        <Heading>Glow with my glow</Heading>
+      </Center>
       <Grid templateColumns="repeat(3, 1fr)" gap={10}>
         {products.length !== 0 &&
           products.map((item) => {
@@ -57,7 +70,7 @@ const Products = () => {
                 lineHeight={"25px"}
               >
                 <Image src={item.image1} height="15rem" m="auto" />
-                <Text>{item.title}</Text>
+                <Text  noOfLines={1}>{item.title}</Text>
                 <Text>{item.brand}</Text>
                 <Tag
                   d={"inline"}
@@ -66,7 +79,7 @@ const Products = () => {
                   textDecoration="line-through"
                   fontSize={".8rem"}
                 >
-                  Rs.200
+                  Rs.{Math.round( +item.price + +item.price*(+item.discount/100))}
                 </Tag>
                 <Tag d={"inline"} bg="white">
                   Rs.{item.price}
@@ -83,10 +96,11 @@ const Products = () => {
                 </Text>
 
                 <Flex w="90%" m="auto">
+
                     <Button fontSize="1.5rem"  bg="pink.100" onClick={()=>handleCart(item)}>
-                        {
-                            cartIcon ? <BsCart4/> : <BsCart2/>
-                        }
+                      <BsCart4/>
+                       
+
                         
                         </Button>
                     <Spacer/>
@@ -96,11 +110,11 @@ const Products = () => {
             );
           })}
       </Grid>
-      <Box m={"2rem 1rem"}>
+      <Center m={"2rem 1rem"}>
         <Button  bg="pink.100">Previous</Button>
         <Button  mr={"1rem"} ml={"1rem"}>{page}</Button>
         <Button  bg="pink.100">Next</Button>
-      </Box>
+      </Center>
     </Box>
     </Box>
   );
