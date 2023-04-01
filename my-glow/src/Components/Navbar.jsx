@@ -78,7 +78,7 @@ const Navbar = () => {
             <Link to="/product">BESTSELLERS</Link>
           </li>
           <li>
-            <Link to="/product">NEW LAUNCHES</Link>
+            <Link to="/products">NEW LAUNCHES</Link>
           </li>
           <li>
             <Link to="/product">OFFERS</Link>
