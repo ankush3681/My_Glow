@@ -12,6 +12,7 @@ import {Payment} from './Payment';
 
 
 import { EditDeletePage } from './EditDeletePage';
+import EditProductPage from './EditProductPage';
 
 
 const MainRoutes = () => {
@@ -25,7 +26,8 @@ const MainRoutes = () => {
       <Route path="/product/:id" element={<ProductDetail/>}></Route>
       <Route path="/payment" element={<Payment/>}></Route>
       <Route path="/cart" element={<Cart/>}></Route>
-      <Route path='/edit' element={<EditDeletePage/>}></Route>
+      <Route path='/delete' element={<EditDeletePage/>}></Route>
+      <Route path='/edit' element={<EditProductPage/>}></Route>
     </Routes>
   )
 }
