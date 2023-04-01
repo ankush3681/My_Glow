@@ -6,7 +6,8 @@ import img1 from "../images/my-glow-logo.jpg";
 import img2 from "../images/logo3my.jpg";
 import img3 from "../images/logo4my.jpg";
 import { BsSearch, BsHandbagFill, BsPersonCircle } from "react-icons/bs";
-import { Show, Hide } from "@chakra-ui/react";
+import { IoPersonCircleOutline ,IoBagHandle } from "react-icons/io5";
+import { Show, Hide ,Text} from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
@@ -14,14 +15,15 @@ const Navbar = () => {
       <Box className="f-nav mob-nav">
         <Box className="logobox">
           {" "}
-          <img src={img2} className="logocss" alt="" />
+          <Link to='/'> <img  src={img2} className="logocss" alt="" /></Link>
+         
         </Box>
 
-        <Box className="search-box1">
+        <Box className="search-box1 hov">
           <input type="text" placeholder='Try"Liquid Lipstick"' />{" "}
           <button>
             <img
-              width={"40px"}
+              width={"25px"}
               src="https://img.icons8.com/ios/x/search.png"
               alt=""
             />
@@ -29,34 +31,26 @@ const Navbar = () => {
         </Box>
 
         <Box className="icon-box ">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
+          <Link to="/login"><Text className="login-hov" padding={"5px"} fontSize={'md'} fontWeight={'bold'} >LogIn</Text></Link>
           <Link to="/cart">
-            <img
+            {/* <img
               src="https://img.icons8.com/material-sharp/2x/shopping-cart.png"
               alt="cart"
-            />
+            /> */}
+            <IoBagHandle className="hov ic" size={'40px'}/>
           </Link>
           <Link to="/admin">
             {" "}
-            <img
+            {/* <img
               width={"50px"}
               src="https://static.vecteezy.com/system/resources/previews/009/636/683/original/admin-3d-illustration-icon-png.png"
               alt="admin"
-            />
+            /> */}
+            <IoPersonCircleOutline className="hov ic" size={'40px'} />
           </Link>
         </Box>
       </Box>
-      <Box className="search-box2">
-        <input type="text" placeholder='Try"Liquid Lipstick"' />{" "}
-        <button>
-          <img
-            width={"40px"}
-            src="https://img.icons8.com/ios/x/search.png"
-            alt=""
-          />
-        </button>
-      </Box>
+      
       <Box className="s-nav mob-nav">
         <ul>
           <li>

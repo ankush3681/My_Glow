@@ -42,7 +42,7 @@ export default function Carousel1() {
       height={'280px'}
       width={'90%'}
       margin={"auto"}
-      marginTop={'10px'}
+      marginTop={'50px'}
       marginBottom={'30px'}
       overflow={'hidden'}
       borderRadius={"20px"}

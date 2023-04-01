@@ -25,6 +25,15 @@
     height: 40px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+.hov:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.ic{
+    padding: 6px;
+    border-radius: 50%; 
+}
 .search-box1 input{
     width: 90%;
     padding: 8px;
@@ -43,37 +52,15 @@
     padding : 10px;
    
 }
-.search-box2{
-    border: 1px solid black;
-    width: 40%;
-    display: flex;
-    border-radius: 10px;
-    height: 40px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-.search-box2 input{
-    width: 90%;
-    padding: 8px;
-    border : 0px solid red;
-    border-radius: 10px 0px 0px 10px;
-    background-color: #DFF6FF;
-}
-.search-box2 input:focus{
-   background-color: #c3e6f4;
-   outline: none;
-}
-.search-box2 button{
-    background-color: #FF5F9E;
-    border-radius: 0px 10px 10px 0px;
-    width: 10%;
-    padding : 10px;
-   
-}
+
+
 .icon-box{
     display: flex;
-    width:30%;
+    width:25%;
     justify-content: space-evenly;
+    margin-right: -50px;
 }
+
 .s-nav{
     position: fixed;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
