@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link,useSearchParams,useLocation } from "react-router-dom";
 import { get_products } from "../Redux/productReducer/action";
-import { BsStarHalf,BsCart4,BsCart2 } from "react-icons/bs";
+import { BsStarHalf,BsCart4 } from "react-icons/bs";
+import { addToCart } from "../Redux/cartReducer/action";
 
 const Products = () => {
     const [searchParam] = useSearchParams();
@@ -16,8 +17,11 @@ const Products = () => {
   });
   const toast = useToast();
 
-  const handleCart = () =>{
-      //  console.log(id)
+
+  const handleCart = (item) =>{
+       setCartIcon(prev => !prev)
+
+
        toast({
         position:'top',
         title: 'Item Added.',
@@ -26,6 +30,10 @@ const Products = () => {
         duration: 2000,
         isClosable: true,
       })
+
+
+      dispatch(addToCart({...item,quantity:1}))
+     
   }
 
   const postObj = {
@@ -88,9 +96,11 @@ const Products = () => {
                 </Text>
 
                 <Flex w="90%" m="auto">
-                    <Button fontSize="1.5rem"  bg="pink.100">
+
+                    <Button fontSize="1.5rem"  bg="pink.100" onClick={()=>handleCart(item)}>
                       <BsCart4/>
                        
+
                         
                         </Button>
                     <Spacer/>

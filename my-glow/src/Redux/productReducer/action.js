@@ -1,8 +1,10 @@
 import {
+  DELETEPRODUCTSUCCESS,
   GETPRODUCTSUCCESSSSTATUS,
   POSTPRODUCTSUCCESS,
   PRODUCTFAILEDSTATUS,
   PRODUCTREQUESTSTATUS,
+  SINGLEPRODUCTFETCH,
 } from "./actionType";
 import axios from "axios";
 
@@ -29,7 +31,35 @@ export const postProduct = (data) => (dispatch) => {
 
   axios
     .post(`https://glow-6s9y.onrender.com/myglow`, data)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.response.data));
+    .then((res) => dispatch(post_product_success))
+    .catch((err) => dispatch({type:PRODUCTFAILEDSTATUS}));
 };
 
+export  const  deleteProduct =  (id) =>  async (dispatch)=>{
+ dispatch({type:PRODUCTREQUESTSTATUS})
+  await axios.delete(`https://glow-6s9y.onrender.com/myglow/${id}`).then((res)=>{
+    console.log(res)
+    dispatch({type:DELETEPRODUCTSUCCESS})
+  }).catch((err)=>{
+    dispatch({type:PRODUCTFAILEDSTATUS})
+  })
+}
+
+export const getSingleProduct = (id)=> async (dispatch)=>{
+  dispatch({type:PRODUCTREQUESTSTATUS})
+
+ await axios.get(`https://glow-6s9y.onrender.com/myglow/${id}`).then((res)=>{
+    console.log(res)
+    dispatch({type:SINGLEPRODUCTFETCH,payload:res.data})
+  }).catch((err)=>console.log(err))
+}
+
+
+export const patchProduct = (id,data)=> async (dispatch)=>{
+  dispatch({type:PRODUCTREQUESTSTATUS})
+  await axios.patch(`https://glow-6s9y.onrender.com/myglow/${id}`,data).then((res)=>{
+    console.log(res)
+    dispatch({type:SINGLEPRODUCTFETCH,payload:res.data})
+  }).catch((err)=>console.log(err))
+
+}

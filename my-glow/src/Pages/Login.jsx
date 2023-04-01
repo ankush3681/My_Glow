@@ -16,12 +16,12 @@ import {
 
 const inputform = {
   fontFamily: "Arial",
-  display: "Block"
-}
+  display: "Block",
+};
 
 const mystyle = {
-  backgroundColor: "yellow"
-}
+  backgroundColor: "yellow",
+};
 
 const Login = () => {
   const [loginUser, setLoginUser] = React.useState({
@@ -53,15 +53,21 @@ const Login = () => {
       <h1>Login page</h1>
       <form onSubmit={verifyLogin} style={inputform}>
         <input
+          w={"200%"}
+          border={"2px solid gray"}
+          color={"#e8f0fe"}
           onChange={(e) =>
             setLoginUser({ ...loginUser, email: e.target.value })
           }
           required
           type="email"
           name="email"
-          placeholder="Enter your email"
+          placeholder="Enter your email"git 
         />
         <input
+          color={"#e8f0fe"}
+          w={"200%"}
+          border={"2px solid gray"}
           onChange={(e) =>
             setLoginUser({ ...loginUser, password: e.target.value })
           }
@@ -70,14 +76,22 @@ const Login = () => {
           name="password"
           placeholder="Enter your Password"
         />
-        <button onSubmit="submit">Submit now</button>
+        <button
+          ml={"30%"}
+          colorScheme="blue"
+          type="submit"
+          w={"200%"}
+          border={"2px solid gray"}
+          onSubmit="submit"
+        >
+          Submit now
+        </button>
       </form>
     </div>
   );
 };
 
 export default Login;
-
 
 // import {
 //   Flex,
@@ -145,7 +159,6 @@ export default Login;
 //     </Flex>
 //   );
 // }
-
 
 // import { useState, useEffect } from 'react';
 // import {
@@ -242,8 +255,6 @@ export default Login;
 // </Flex>
 // );
 // }
-
-
 
 // import { useState } from 'react';
 // import {

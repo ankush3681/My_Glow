@@ -3,15 +3,16 @@ import HomePage from "./HomePage";
 import { Routes,Route } from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
-import { Admin } from './Admin';
 import GlowProduct from './GlowProducts';
 import {ProductDetail} from './ProductDetail';
 import Cart from './Cart';
+import Admin from "./Admin";
 
 import {Payment} from './Payment';
 
 
 import { EditDeletePage } from './EditDeletePage';
+import EditProductPage from './EditProductPage';
 
 
 const MainRoutes = () => {
@@ -25,7 +26,8 @@ const MainRoutes = () => {
       <Route path="/product/:id" element={<ProductDetail/>}></Route>
       <Route path="/payment" element={<Payment/>}></Route>
       <Route path="/cart" element={<Cart/>}></Route>
-      <Route path='/edit' element={<EditDeletePage/>}></Route>
+      <Route path='/delete' element={<EditDeletePage/>}></Route>
+      <Route path='/edit' element={<EditProductPage/>}></Route>
     </Routes>
   )
 }
