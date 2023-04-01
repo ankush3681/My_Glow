@@ -50,6 +50,7 @@ const Signup = () => {
           <FormControl ml={"30%"} mt={'100px'}>
             <FormLabel color={'white'}>Email address</FormLabel>
             <Input
+             color={'#e8f0fe'}
               w={"200%"}
               border={"2px solid gray"}
               onChange={(e) =>
@@ -62,9 +63,11 @@ const Signup = () => {
             />
             <br />
             <br />
+            <FormLabel color={'white'}>Email Password</FormLabel>
             <Input
               w={"200%"}
               border={"2px solid gray"}
+              color={'#e8f0fe'}
               onChange={(e) =>
                 setLoginUser({ ...loginUser, password: e.target.value })
               }
@@ -85,6 +88,7 @@ const Signup = () => {
           >
           Submit
         </Button>
+
         {/* <Button
         ml={"30%"}
        w={'600px'}
@@ -98,7 +102,8 @@ const Signup = () => {
       
       </Box>
       <Box>
-        <Image src={"https://media.sugarcosmetics.com/upload/authSIe2.jpg"} h={'50%'} ml={'40%'}/>
+        <Image src={"https://media.sugarcosmetics.com/upload/authSIe2.jpg"} h={'50%'} ml={'45%'}/>
+        {/* <Image src={"http://localhost:3000/static/media/logo3my.6318ea5f18dd4fcbda03.jpg"} h={'3%'} ml={'65%'} mb={'10%'}/> */}
       </Box>
      </Flex>
     </div>
