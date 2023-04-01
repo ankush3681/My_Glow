@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import {
   deleteProduct,
   getSingleProduct,
+  get_editedProducts,
   get_products,
 } from "../Redux/productReducer/action";
 import { BsStarHalf, BsCart4, BsCart2 } from "react-icons/bs";
@@ -48,7 +49,7 @@ export const EditDeletePage = () => {
     console.log(e.target.id);
     dispatch(deleteProduct(e.target.id))
       .then((res) => {
-        dispatch(get_products);
+        dispatch(get_editedProducts);
       })
       .catch((err) => {
         console.log(err);
@@ -58,17 +59,21 @@ export const EditDeletePage = () => {
   let count = false;
 
   useEffect(() => {
-    dispatch(get_products);
+    dispatch(get_editedProducts);
   }, []);
   return (
-    <Box w="70%" ml="4rem">
-      <Flex gap={"10%"}>
-        <Sidebar />
+    <Center>
+
+    <Box w="70%" ml="4rem" mt={"5%"}>
+   
+     
         <Center>
           <Box>
-            <Heading color="red" mb={"5%"}>
+            <Center>
+            <Heading color="red" mb={"5%"} mt={"2%"}>
               Admin Panel
             </Heading>
+            </Center>
             <Center>
               <Grid templateColumns="repeat(5, 1fr)" gap={10}>
                 {products.length !== 0 &&
@@ -141,7 +146,8 @@ export const EditDeletePage = () => {
             </Box>
           </Box>
         </Center>
-      </Flex>
+    
     </Box>
+    </Center>
   );
 };

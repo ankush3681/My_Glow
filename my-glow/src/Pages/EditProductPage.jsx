@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Heading, Input } from '@chakra-ui/react'
+import { Box, Button, ButtonGroup, Heading, Input } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { patchProduct } from '../Redux/productReducer/action'
@@ -44,7 +44,7 @@ const handleClick = ()=>{
 
 
   return (
-    <div> 
+  <Box mt={"5%"}>
         <h1>EditProductPage </h1>
         <Heading as = {"h3"}>Title</Heading>
         <Input type = "text" defaultValue = {store.title} onChange={(e)=>handleChange(e)} name="title"></Input>
@@ -69,7 +69,7 @@ const handleClick = ()=>{
         <Button onClick = {handleClick}>Edit Product</Button>
     
     
-    </div>
+        </Box>
   )
 }
 
