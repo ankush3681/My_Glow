@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { get_products } from "../Redux/productReducer/action";
 import { BsStarHalf,BsCart4,BsCart2 } from "react-icons/bs";
+import { addToCart } from "../Redux/cartReducer/action";
 
 const Products = () => {
     const [cartIcon,setCartIcon] = useState(false);
@@ -15,7 +16,7 @@ const Products = () => {
   });
   const toast = useToast();
 
-  const handleCart = () =>{
+  const handleCart = (item) =>{
        setCartIcon(prev => !prev)
 
        toast({
@@ -26,6 +27,10 @@ const Products = () => {
         duration: 2000,
         isClosable: true,
       })
+
+
+      dispatch(addToCart({...item,quantity:1}))
+     
   }
 
   let count=false;
@@ -78,7 +83,7 @@ const Products = () => {
                 </Text>
 
                 <Flex w="90%" m="auto">
-                    <Button fontSize="1.5rem"  bg="pink.100" onClick={handleCart}>
+                    <Button fontSize="1.5rem"  bg="pink.100" onClick={()=>handleCart(item)}>
                         {
                             cartIcon ? <BsCart4/> : <BsCart2/>
                         }
