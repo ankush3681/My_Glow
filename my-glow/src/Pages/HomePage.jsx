@@ -31,11 +31,15 @@ const HomePage = () => {
       <Carousel/>
       </Box>
       <Box backgroundImage={"https://wallpaperaccess.com/full/1326583.jpg"}>
+
+      <Box display={'flex'} alignItems='center' margin={'auto'} marginLeft='30%'><Line/><Text fontSize='3xl' padding={'10px'} color={'white'} >BESTSELLERS</Text><Line/></Box>
+      
+
           <Box className='prod-css' border='1px solid red' height={'auto'} display={'grid'} gridTemplateColumns={''} overflowX='scroll'>
 {products.map((el)=><ProductCard key={el.id} title={el.title} image1={el.image1} price={el.price} discount={el.discount}  rating={el.rating} brand={el.brand}  />)}
           </Box>
       </Box>
-      {/* <Heading head={'Ankit'} /> */}
+     
       <Box display={'flex'} alignItems='center' margin={'auto'} marginLeft='25%'><Line/><Text fontSize='3xl' padding={'10px'} >TIPSY LIPS SCRUB + BALM DUO</Text><Line/></Box>
        <Box  
       height={'300px'}
@@ -63,8 +67,10 @@ const HomePage = () => {
       </Box>
       {/* <Text fontSize='3xl' padding={'10px'}  align='center' >NEWLY LAUNCHED</Text> */}
       <Box display={'flex'} alignItems='center' margin={'auto'} marginLeft='30%'><Line/><Text fontSize='3xl' padding={'10px'} >NEWLY LAUNCHED</Text><Line/></Box>
-      
+      <Box id='newly-launched'>
       <Carousel1/>
+      </Box>
+      
     </div>
   )
 }
