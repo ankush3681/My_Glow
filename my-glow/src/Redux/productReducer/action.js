@@ -11,9 +11,9 @@ const post_product_success = () => {
 };
 
 
-export const get_products = (dispatch) =>{
+export const get_products = (postObj) => (dispatch) =>{
    dispatch({type:PRODUCTREQUESTSTATUS})
- axios.get(`https://glow-6s9y.onrender.com/myglow`)  
+ axios.get(`https://glow-6s9y.onrender.com/myglow`,postObj)  
  .then((res)=>{
     // console.log(res.data);
     dispatch({type:GETPRODUCTSUCCESSSSTATUS,payload:res.data})
