@@ -1,16 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./cart.css";
 import {
   Box,
-  Flex,
-  Heading,
-  Spacer,
-  Text,
-  Button,
-  Image,
-  CloseButton,
-  Center,
+  Center
 } from '@chakra-ui/react';
 
 
@@ -18,6 +12,7 @@ import {
 import { removeFromCart,incrementQuantity,decrementQuantity } from '../Redux/cartReducer/action';
 
 const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => (store.cartReducer));
   console.log('cartItems:', cartItems.length)
@@ -29,7 +24,7 @@ const Cart = () => {
    
 
   }
-  // console.log(+cartItems.price*cartItems.quanity)
+
 
   if (cartItems.length === 0) {
     return (
@@ -49,25 +44,27 @@ const Cart = () => {
   }
 
   return (
-    <Box mt={'7%'}>
+   
+    <Box mt={'5%'} >
      
     
-      <section className="main-cart-section">
-      
-        <h1>shopping Cart</h1>
-        <p className="total-items">
+      <section style={{height:'25' }} className="main-cart-section">
+     
+        <h1 style={{marginLeft:'43%',marginTop:'7%'}}>shopping Cart</h1>
+        <p style={{marginLeft:'40%'}} className="total-items">
           you have <span className="total-items-count">{cartItems.length} </span> items
           in shopping cart
         </p>
+       
         
 
-        <div className="cart-items">
-          <div className="cart-items-container">
-            <Scrollbars>
+        <div style={{height:'500px',width:'90%'}} className="cart-items">
+          <div style={{width:'100%',height:'80%' }} className="cart-items-container">
+            <Scrollbars >
               {cartItems.map((curItem) => {
                 console.log(curItem)
                 
-                // return   <Items key={curItem.id} {...curItem} />;
+                
 
 
                 return (<>
@@ -77,8 +74,8 @@ const Cart = () => {
                     </div>
             
                     <div className="title">
-                      <h2>{curItem.title}</h2>
-                      <p>{curItem.description}</p>
+                      <h2 style={{fontSize:'25px'}}>{curItem.title}</h2>
+                      <p style={{fontSize:'10px'}}>{curItem.description}</p>
                     </div>
             
                     <div className="add-minus-quantity">
@@ -88,14 +85,12 @@ const Cart = () => {
                     </div>
             
                     <div className="price">
-                      <h3>{(+curItem.price)*(curItem.quantity)}₹</h3>
+                      <h3>₹{(+curItem.price)*(curItem.quantity)}</h3>
                     </div>
             
                     <div className="remove-item">
-                      {/* <i
-                        className="fas fa-trash-alt remove"
-                        onClick={() => dispatch(removeFromCart(curItem.id))}></i> */}
-                        <Button  onClick={() => dispatch(removeFromCart(curItem.id))} >Remove</Button>
+                     
+                        <button  onClick={() => dispatch(removeFromCart(curItem.id))} style={{border:'none',background:'pink',padding:'10px',fontSize:'16px',borderRadius:'12px'}}>Remove</button>
                     </div>
                   </div>
             
@@ -109,14 +104,21 @@ const Cart = () => {
 
         <div className="card-total">
           <h3>
-            Cart Total : <span>{total}₹</span>
+            Cart Total : <span>₹{total}</span>
           </h3>
-          <button>checkout</button>
+        
+
+
+          <button >
+                 <Link to="/address">checkout</Link> 
+                </button>
          
         </div>
       </section>
       
+      
     </Box>
+    
   );
 
 

@@ -1,21 +1,17 @@
 import React from "react";
 import HomePage from "./HomePage";
 
-import { Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import Signup from "./Signup";
-import  Admin  from "./Admin";
-import GlowProduct from "./GlowProducts";
-import { ProductDetail } from "./ProductDetail";
-import Cart from "./Cart";
-
-import { Payment } from "./Payment";
-
-
-
-
+import { Routes,Route } from "react-router-dom";
+import Login from './Login';
+import Signup from './Signup';
+import GlowProduct from './GlowProducts';
+import {ProductDetail} from './ProductDetail';
+import Cart from './Cart';
+import Admin from "./Admin";
 import { EditDeletePage } from './EditDeletePage';
 import EditProductPage from './EditProductPage';
+import Address from './Address';
+import Payment from './Payment';
 
 
 
@@ -43,6 +39,8 @@ const MainRoutes = () => {
       <Route path="/cart" element={<Cart/>}></Route>
       <Route path='/delete' element={<EditDeletePage/>}></Route>
       <Route path='/edit' element={<EditProductPage/>}></Route>
+      <Route path='/address' element={<Address/>}></Route>
+      
     </Routes>
   );
 };
