@@ -18,7 +18,7 @@ const ProductCard = ({image1,title,brand,price,discount,rating,id}) => {
                 lineHeight={"25px"}
                 background={'#FFEAEA'}
                 margin='10px'
-            
+            width={'300px'}
                 // zIndex ='100'
               >
 
