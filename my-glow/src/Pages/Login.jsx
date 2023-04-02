@@ -1,6 +1,6 @@
 // // Saurabh
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import {
   Button,
@@ -13,9 +13,12 @@ import {
   Stack,
   Image,
   Box,
+  useToast
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { postLogin } from "../Redux/AuthRedux/action";
+import { useDispatch } from "react-redux";
 
 const inputform = {
   fontFamily: "Arial",
@@ -29,31 +32,46 @@ const mystyle = {
 };
 
 const Login = () => {
-  const [loginUser, setLoginUser] = React.useState({
-    email: "",
-    password: "",
-    name: "",
-  });
-  const verifyLogin = async (e) => {
+
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const dispatch = useDispatch();
+  const toast = useToast()
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const userDetail = {
+    email,password
+  }
+
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    try {
-      let usersData = await fetch(`https://api-ak.vercel.app/users`);
-      let data = await usersData.json();
-      for (let i = 0; i <= data.length - 1; i++) {
-        if (
-          loginUser.email === data[i].email &&
-          loginUser.password === data[i].password
-        ) {
-          alert(`Welcome Back to My Glow`);
-          window.location = '/';
-          return;
-        }
-      }
-      alert("Wrong Credential");
-    } catch (error) {
-      console.log("error ", error);
-    }
-  };
+     
+    dispatch(postLogin(userDetail))
+    .then((res)=>{
+     location.state ? navigate(location.state) : navigate("/");
+    toast({
+      title: 'Login Success.',
+      description: "Welcome to My Glow.",
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })        
+    })
+    .catch(()=>{
+      toast({
+        title: 'Wrong Credential.',
+        description: "Please Try again to Login.",
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      })        
+    })
+
+    setEmail("");
+    setPassword("");
+  }
+  
   return (
     <div>
       <Navbar />
@@ -62,7 +80,7 @@ const Login = () => {
 
       <Flex bg={"black"}>
         <Box>
-          <form onSubmit={verifyLogin}>
+          <form onSubmit={handleLoginSubmit}>
             <Box>
               <FormControl ml={"30%"} mt={"100px"}>
                 <FormLabel color={"white"}>Email address</FormLabel>
@@ -70,12 +88,11 @@ const Login = () => {
                   color={"#e8f0fe"}
                   w={"200%"}
                   border={"2px solid gray"}
-                  onChange={(e) =>
-                    setLoginUser({ ...loginUser, email: e.target.value })
-                  }
+                  onChange={(e)=>setEmail(e.target.value)}
                   required
                   type="email"
                   name="email"
+                  value={email}
                   placeholder="Enter your email"
                 />
                 <br />
@@ -85,11 +102,10 @@ const Login = () => {
                   w={"200%"}
                   border={"2px solid gray"}
                   color={"#e8f0fe"}
-                  onChange={(e) =>
-                    setLoginUser({ ...loginUser, password: e.target.value })
-                  }
+                  onChange={(e)=>setPassword(e.target.value)}
                   required
                   type="password"
+                  value={password}
                   name="password"
                   placeholder="Enter your Password"
                 />
@@ -142,7 +158,6 @@ const Login = () => {
         </Box>
       </Flex>
 
-      <Footer />
     </div>
   );
 };

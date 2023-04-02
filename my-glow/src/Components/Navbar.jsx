@@ -8,8 +8,12 @@ import img3 from "../images/logo4my.jpg";
 import { BsSearch, BsHandbagFill, BsPersonCircle } from "react-icons/bs";
 import { IoPersonCircleOutline ,IoBagHandle } from "react-icons/io5";
 import { Show, Hide ,Text} from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+
+  const {isAuth} = useSelector((state)=> state.authReducer);
+
   return (
     <Box>
       <Box className="f-nav mob-nav">
@@ -31,7 +35,7 @@ const Navbar = () => {
         </Box>
 
         <Box className="icon-box ">
-          <Link to="/login"><Text className="login-hov" padding={"5px"} fontSize={'md'} fontWeight={'bold'} >LogIn/Register</Text></Link>
+          <Link to="/login"><Text className="login-hov" padding={"5px"} fontSize={'md'} fontWeight={'bold'} >{isAuth ? "Ankush" : "Login/Register" }</Text></Link>
           <Link to="/cart">
             {/* <img
               src="https://img.icons8.com/material-sharp/2x/shopping-cart.png"
