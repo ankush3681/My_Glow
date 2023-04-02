@@ -19,7 +19,7 @@ const Products = () => {
 
 
   const handleCart = (item) =>{
-       //setCartIcon(prev => !prev)
+
 
 
        toast({
