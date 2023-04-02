@@ -155,13 +155,6 @@ export const EditDeletePage = () => {
                   })}
               </Grid>
             </Center>
-            <Box m={"2rem 1rem"}>
-              <Button bg="pink.100">Previous</Button>
-              <Button mr={"1rem"} ml={"1rem"}>
-                {page}
-              </Button>
-              <Button bg="pink.100">Next</Button>
-            </Box>
           </Box>
         </Center>
     
