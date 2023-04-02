@@ -23,6 +23,7 @@ import {
 import { BsStarHalf, BsCart4, BsCart2 } from "react-icons/bs";
 import Sidebar from "../Components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 export const EditDeletePage = () => {
   const [cartIcon, setCartIcon] = useState(false);
@@ -63,15 +64,15 @@ export const EditDeletePage = () => {
   }, []);
   return (
     <Center>
-
-    <Box w="70%" ml="4rem" mt={"5%"}>
-   
+  <Navbar/>
+    <Box w="100%"  mt={"5%"}>
+    
      
         <Center>
           <Box>
             <Center>
-            <Heading color="red" mb={"5%"} mt={"2%"}>
-              Admin Panel
+            <Heading color="red" mb={"5%"} mt={"2%"} size={"xl"} bgClip = {"text"} bgGradient="linear(to-l, #7928CA, #FF0080)">
+           Admin Panel
             </Heading>
             </Center>
             <Center>
@@ -119,15 +120,32 @@ export const EditDeletePage = () => {
                             bg="pink.100"
                             onClick={handleEdit}
                             id={item.id}
+                            p={4}
+                            color='white'
+                            fontWeight='bold'
+                            borderRadius='md'
+                            bgGradient='linear(to-r, teal.500, green.500)'
+                            _hover={{
+                              bgGradient: 'linear(to-r, red.500, yellow.500)',
+                            }}
                           >
                             Edit
                           </Button>
                           <Spacer />
                           <Button
-                            p={"1rem 2rem"}
+                          fontSize="1.5rem"
                             bg="pink.100"
                             id={item.id}
                             onClick={(e) => handleDelete(e)}
+                    
+                            p={4}
+                            color='white'
+                            fontWeight='bold'
+                            borderRadius='md'
+                            bgGradient='linear(to-r, teal.500, green.500)'
+                            _hover={{
+                              bgGradient: 'linear(to-r, red.500, yellow.500)',
+                            }}
                           >
                             Delete
                           </Button>
