@@ -10,10 +10,11 @@ function App() {
     <div className="App">
       <Navbar/>
       <MainRoutes/> 
-      {/* <Footer/> */}
-  
+      <Footer/>
+      
     </div>
   );
 }
+//app.js
 
 export default App;

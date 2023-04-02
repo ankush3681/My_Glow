@@ -43,7 +43,7 @@ export default function Carousel() {
 
   return (
     <Box
-    marginTop={"72px"}
+    marginTop={'108px'}
       position={'relative'}
       height={'350px'}
       width={'100%'}
