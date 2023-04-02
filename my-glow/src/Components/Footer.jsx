@@ -1,66 +1,76 @@
-import React from 'react'
-import { FaFacebook , } from 'react-icons/fa';
-import { AiFillInstagram ,AiFillTwitterCircle } from "react-icons/ai"
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
-import HomePage from '../Pages/HomePage';
-import Login from "../Pages/Login"
-import { HStack, VStack ,Text, Divider, Box, Grid ,Button ,IconButton} from '@chakra-ui/react';
+import { HStack, VStack ,Text, Divider, Box, Grid } from '@chakra-ui/react';
+import { BsFacebook ,BsInstagram ,BsTwitter,BsPinterest ,BsYoutube ,BsEnvelopeFill} from "react-icons/bs";
 
 
 const Footer = () => {
-  return (
-    <Box width={["100%" ,"100%"]} className='footer' background={"linear-gradient(172deg, rgba(2,0,36,1) 0%, rgba(197,84,192,1) 0%, rgba(255,46,173,1) 33%, rgba(0,212,255,1) 100%)"}>
+const [sub , setSub] = useState(false)
+  const handleSubscribe = ()=> {
+      setSub((prev)=>!prev)
+      
+  }
 
-       <Divider/>
-       <h1>LET'S STAY IN TOUCH</h1>
-       <h5>Get the latest beauty tips straight to your inbox. Can’t wait to connect!</h5>
+  return (
+    <Box paddingTop={'20px'} width={["100%" ,"100%"]} className='footer' background={"linear-gradient(172deg, rgba(2,0,36,1) 0%, rgba(197,84,192,1) 0%, rgba(255,46,173,1) 33%, rgba(0,212,255,1) 100%)"}>
+
+      
+       <Box style={{textAlign :"center"}}>
+       <Text fontSize={'xl'} lineHeight={'30px'}>LET'S STAY IN TOUCH</Text>
+       <h5 style={{color:'white'}}>Get the latest beauty tips straight to your inbox. Can’t wait to connect!</h5>
+       </Box>
   <Box>
-    <HStack  justifyContent={"center"} margin={"auto"} marginTop={"5"} marginBottom={"1"} >
-        <input style={{"padding" : "8px",width:"40%" , borderRadius :"10px 0px 0px 10px" ,color:"black"}} type="text" placeholder='Your Email' /> 
-        <button style={{"padding" : "8px",color:"white" ,backgroundColor:"black",marginLeft:"-8px" , borderRadius :"0px 10px 10px 0px"}} >Subscirbe</button>
+    <HStack  justifyContent={"center"} margin={"auto"} marginTop={"4"} marginBottom={"4"} >
+        <input style={{"padding" : "8px",width:"40%" , borderRadius :"10px 0px 0px 10px" ,color:"black"}} type="email" placeholder='Your Email' /> 
+        <button style={{"padding" : "8px",color:"white" ,backgroundColor:"black",marginLeft:"-8px" , borderRadius :"0px 10px 10px 0px"}} onClick={handleSubscribe} >Subscirbe</button>
        
     </HStack>
-    <p >Successefully subscribed</p>
+    <Box style={{textAlign:'center'}}>
+    <p >{sub? 'Congratulations , You Successfully Subscribed Our Newsletter !!' : 'Enter Email To subscribe Our Newsletter'}</p>
+    </Box>
+    
   </Box>
               
        <Divider marginTop={"15px"} />
         
-        <HStack justifyContent={"center"} margin={"10px"}>
-          <img width="43px" src="https://www.citypng.com/public/uploads/preview/-11595326936asbkomoamd.png" alt="facebook" />
-          <img width="60px"  src="https://assets.stickpng.com/images/5ecec6ef73e4440004f09e75.png" alt="instagram" />
-          <img width="50px" src="https://image.similarpng.com/very-thumbnail/2020/06/Black-icon-Twitter-logo-transparent-PNG.png" alt="" />
-          <img width="45px" src="https://www.freeiconspng.com/thumbs/pinterest-logo-icon/white-pinterest-logo-on-black-16.png" alt="" />
-        </HStack>
+        <HStack justifyContent={"center"} margin={"25px"} >
+          <Link to='https://www.facebook.com/trySUGAR/'><BsFacebook size={'30px'} /></Link>
+          <Link to='https://www.facebook.com/trySUGAR/'><BsInstagram size={'30px'}  /></Link>
+          <Link to='https://www.facebook.com/trySUGAR/'><BsTwitter size={'30px'}  /></Link>
+          <Link to='https://www.facebook.com/trySUGAR/'><BsPinterest size={'30px'}  /></Link>
+          <Link to='https://www.facebook.com/trySUGAR/'><BsYoutube size={'30px'}  /></Link>
+          <Link to='https://www.facebook.com/trySUGAR/'><BsEnvelopeFill size={'30px'}  /></Link>
+         </HStack>
       
       <Divider/>
 
         <div className='footer-link' style={{display:"flex" , justifyContent:"space-evenly" ,margin:"10px"}} >
-        <Link to="/" >Stores</Link>
-        <Link to="/" >Terms&Conditions</Link>
-        <Link to="/" >Returns</Link>
-        <Link to="/" >FAQs</Link>
-        <Link to="/" >About</Link>
+        <Link to="/" ><Text fontWeight={'bold'} fontSize={'xl'} >Stores</Text></Link>
+        <Link to="/" ><Text fontWeight={'bold'} fontSize={'xl'} >Terms&Conditions</Text></Link>
+        <Link to="/" ><Text fontWeight={'bold'} fontSize={'xl'} >Returns</Text></Link>
+        <Link to="/" ><Text fontWeight={'bold'} fontSize={'xl'} >FAQs</Text></Link>
+        <Link to="/" ><Text fontWeight={'bold'} fontSize={'xl'} >About</Text></Link>
         </div> 
 
         <Divider/>
 
         <div>
-            <HStack margin={"10px"} justifyContent="space-evenly"  textAlign={'left'}>
+            <HStack margin={"15px"} justifyContent="space-evenly"  textAlign={'left'}>
                <VStack>
-                <Text >GET IN TOUCH <br />Call Us At <br />1800-209-9933</Text>
+                <Text fontWeight={'bold'} fontSize={'sm'}  >GET IN TOUCH <br />Call Us At <br />1800-209-9933</Text>
                 </VStack>
                 <VStack>
-                    <Text>Support <br /> hello@sugarcosmetics.com</Text>
+                    <Text  fontWeight={'bold'} fontSize={'sm'}  >Support <br /> hello@sugarcosmetics.com</Text>
                 </VStack>
                 <VStack>
-                    <Text>Careers <br />We're hiring!</Text>
+                    <Text  fontWeight={'bold'} fontSize={'sm'}  >Careers <br />We're hiring!</Text>
                 </VStack>
                 <VStack>
-                    <Text>Press & Media <br />@sugarcosmetics.com
+                    <Text  fontWeight={'bold'} fontSize={'sm'}  >Press & Media <br />@sugarcosmetics.com
                 </Text>
                 </VStack>
                 <VStack>
-                    <Text>Influencer Collab <br />Join Us</Text>
+                    <Text  fontWeight={'bold'} fontSize={'sm'}  >Influencer Collab <br />Join Us</Text>
                 </VStack>
             </HStack>
 
@@ -68,7 +78,7 @@ const Footer = () => {
 
                 <Grid templateColumns='repeat(2   , 1fr)'  margin={"15px"}>
                     <VStack>
-                        <Text >GET THE NEW SUGAR APP TODAY!</Text>
+                        <Text  fontWeight={'bold'} fontSize={'xl'} >GET THE NEW SUGAR APP TODAY!</Text>
                         <Text>Tap into a better shopping experience.</Text>
                     </VStack>
                     <HStack>
@@ -78,7 +88,7 @@ const Footer = () => {
                 </Grid>    
         <Divider/>
 
-        <Text >Copyright © 2023 My Glow Cosmetics. All rights reserved.</Text>
+        <Text align={'center'} style={{color:'white'}}>Copyright © 2023 My Glow Cosmetics. All rights reserved.</Text>
 
         <Divider/>
         </div>
