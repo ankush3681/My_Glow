@@ -1,5 +1,5 @@
 .prod-css{
     display: grid;
-    grid-auto-flow: column;
-    /* grid-template-columns: repeat(100,1fr);*/
+    /* grid-auto-flow: column; */
+    grid-template-columns: repeat(100,1fr);
 } 
