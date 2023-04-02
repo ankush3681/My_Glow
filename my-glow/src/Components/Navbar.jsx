@@ -31,7 +31,7 @@ const Navbar = () => {
         </Box>
 
         <Box className="icon-box ">
-          <Link to="/login"><Text className="login-hov" padding={"5px"} fontSize={'md'} fontWeight={'bold'} >LogIn</Text></Link>
+          <Link to="/login"><Text className="login-hov" padding={"5px"} fontSize={'md'} fontWeight={'bold'} >LogIn/Register</Text></Link>
           <Link to="/cart">
             {/* <img
               src="https://img.icons8.com/material-sharp/2x/shopping-cart.png"
