@@ -33,3 +33,23 @@ email :- eve.holt@reqres.in
 password :- myglow
 
 <Img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/0533d215-072d-46a6-a126-656aa10580fb.jpg&w=1920&q=75" />
+
+
+Filter
+
+GET /myglow?title=json-server&author=typicode
+GET /myglow?id=1&id=2
+GET /comments?author.name=typicode
+
+
+Sort
+
+Add _sort and _order (ascending order by default)
+
+GET /myglow?_sort=price&_order=asc
+GET /myglow/1/rating?_sort=votes&_order=asc
+<br/>
+For multiple fields, use the following format:
+<br/>
+GET /myglow?_sort=price,views&_order=desc,asc
+
