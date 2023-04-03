@@ -25,3 +25,10 @@ Tech Stack :-
 * Chakra UI
 
 <Img src="https://my-glow-ankush3681.vercel.app/static/media/logo3my.6318ea5f18dd4fcbda03.jpg" />
+
+Login Credentials
+
+email :- eve.holt@reqres.in
+password :- myglow
+
+<Img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/0533d215-072d-46a6-a126-656aa10580fb.jpg&w=1920&q=75" />
