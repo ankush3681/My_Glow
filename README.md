@@ -42,12 +42,12 @@ GET /myglow?id=1&id=2
 GET /comments?author.name=typicode
 
 
-Sort
+<P text-decoration="underline">Sort</>
 
 Add _sort and _order (ascending order by default)
 
 GET /myglow?_sort=price&_order=asc
-GET /myglow/1/rating?_sort=votes&_order=asc
+GET /myglow/1/rating?_sort=discount&_order=asc
 <br/>
 For multiple fields, use the following format:
 <br/>
