@@ -5,7 +5,7 @@ This is the clone of sugarcosmetic website which basically deals with various co
 Collabarative project of 5 members.
 Duration- 5 days.
 
-<h3>Deployed Link :- </h3> https://my-glow-ankush3681.vercel.app/
+<span> <h3>Deployed Link :- </h3> </span> https://my-glow-ankush3681.vercel.app/
 <br/>
 Presentation Video :- https://drive.google.com/file/d/1fQtvc4raGNnVuDxNf9FtLBiN_r5XRJNg/view?usp=share_link
 
