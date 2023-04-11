@@ -12,7 +12,7 @@ Presentation Video :- https://drive.google.com/file/d/1fQtvc4raGNnVuDxNf9FtLBiN_
 
 <Img src="https://my-glow-ankush3681.vercel.app/static/media/logo3my.6318ea5f18dd4fcbda03.jpg" />
 
-Features :- 
+<h2>Features :- </h2>
 * PrivateRouting
 * Login and Signup Authentication
 * Filtering
@@ -20,7 +20,7 @@ Features :-
 * Admin Side
 * CRUD Operations
 
-Tech Stack :- 
+<h2>Tech Stack :- </h2>
 * HTML
 * Css
 * Javascript
@@ -32,7 +32,7 @@ Tech Stack :-
 
 
 
-Login Credentials
+<h2>Login Credentials</h2>
 
 email :- eve.holt@reqres.in
 <br/>
