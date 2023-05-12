@@ -13,6 +13,8 @@ import EditProductPage from './EditProductPage';
 import Address from './Address';
 import Payment from './Payment';
 import PrivateRoutes from "../Components/PrivateRoutes";
+import AdminPrivateRoutes from "../Components/AdminPrivateRoutes";
+import AdminLogin from "./adminLogin";
 
 
 
@@ -23,14 +25,15 @@ const MainRoutes = () => {
       <Route path="/" element={<HomePage />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup />}></Route>
-      <Route path="/admin" element={<PrivateRoutes><Admin/></PrivateRoutes>}></Route>
+      <Route path="/admin" element={<AdminPrivateRoutes><Admin/></AdminPrivateRoutes>}></Route>
       <Route path="/product" element={<PrivateRoutes><GlowProduct/></PrivateRoutes>}></Route>
       <Route path="/product/:id" element={<PrivateRoutes><ProductDetail/></PrivateRoutes>}></Route>
       <Route path="/payment" element={<Payment />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
-      <Route path="/delete" element={<EditDeletePage />}></Route>
-      <Route path='/edit' element={<EditProductPage/>}></Route>
+      <Route path="/delete" element= {<AdminPrivateRoutes><EditDeletePage /></AdminPrivateRoutes>}></Route>
+      <Route path='/edit' element={<AdminPrivateRoutes><EditProductPage/></AdminPrivateRoutes>}></Route>
       <Route path='/address' element={<Address/>}></Route>
+      <Route path = "/adminlogin" element={<AdminLogin/>}></Route>
       
     </Routes>
   );

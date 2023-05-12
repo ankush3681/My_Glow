@@ -221,19 +221,20 @@ const handleCOD=()=>{
                   <Box >
                     <FormControl>
                       <FormLabel>Card number</FormLabel>
-                      <Input type='number' _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
+                      <Input  _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
                         onChange={handleChange}
-                        name="cardno" />
+                        name="cardno"
+                        type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" />
                     </FormControl>
                     <FormControl>
                       <FormLabel>Expiration date</FormLabel>
-                      <Input type='month' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
-                        name="ExpiringDate" />
+                      <Input type='date' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
+                        name="ExpiringDate"  required />
                     </FormControl>
                     <FormControl>
                       <FormLabel>CVV</FormLabel>
                       <Input type="password" _focus={{ border: "1px solid #cea464" }} placeholder="Enter CVV" value={data.cvv} onChange={handleChange}
-                        name="cvv" />
+                        name="cvv" minLength={"3"} maxLength={"3"} required />
                     </FormControl>
                     <Button bgColor="#df9018"
                       _hover={{ bgColor: "#f89f17" }}
@@ -246,7 +247,7 @@ const handleCOD=()=>{
 
                     {carddetails !== "" ?
                       <FormControl>
-                        <Input type='number' placeholder='Enter your Otp' value={enteredotp} onChange={(e) => setEnteredOtp(e.target.value)} />
+                        <Input type='number' placeholder='Enter your Otp' value={enteredotp} onChange={(e) => setEnteredOtp(e.target.value)} required/>
                         <Button bgColor="#df9018"
                           _hover={{ bgColor: "#f89f17" }}
                           color="white"
@@ -269,7 +270,7 @@ const handleCOD=()=>{
                   <Box>
                     <FormControl>
                       <FormLabel>Your UPI ID</FormLabel>
-                      <Input _focus={{ border: "1px solid #cea464" }} placeholder="Enter your UPI ID" />
+                      <Input _focus={{ border: "1px solid #cea464" }} placeholder="Enter your UPI ID" type='email' pattern='^[\w.-]+@[\w.-]+$'/>
                     </FormControl>
                     <Button bgColor="#df9018"
                       _hover={{ bgColor: "#f89f17" }}
