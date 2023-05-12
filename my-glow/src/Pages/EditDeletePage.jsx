@@ -63,6 +63,10 @@ export const EditDeletePage = () => {
     dispatch(get_editedProducts);
   }, []);
   return (
+
+// broken images are are removed with the help of edit functionality on admin side
+
+
     <Center>
   <Navbar/>
     <Box w="100%"  mt={"5%"}>
