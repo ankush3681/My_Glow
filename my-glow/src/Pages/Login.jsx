@@ -1,5 +1,5 @@
 // // Saurabh
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import {
@@ -17,8 +17,7 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { postLogin } from "../Redux/AuthRedux/action";
-import { useDispatch } from "react-redux";
+import {  useSelector } from "react-redux";
 
 const inputform = {
   fontFamily: "Arial",
@@ -35,42 +34,56 @@ const Login = () => {
 
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
-  const dispatch = useDispatch();
+  const [count,setCount] = useState(true);
   const toast = useToast()
   const navigate = useNavigate();
   const location = useLocation();
 
+  const users = useSelector((state)=>{
+    // console.log(state);
+    return state.signupReducer.users;
+  })
+
+  // console.log(users)
+  
   const userDetail = {
     email,password
   }
 
+
+
+ 
+
+
+
+  
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-     
-    dispatch(postLogin(userDetail))
-    .then((res)=>{
-     location.state ? navigate(location.state) : navigate("/");
-    toast({
-      title: 'Login Success.',
-      description: "Welcome to My Glow.",
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    })        
-    })
-    .catch(()=>{
-      toast({
-        title: 'Wrong Credential.',
-        description: "Please Try again to Login.",
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-      })        
-    })
+
+    const cur_user = users.find((ele)=> ele.email === email);
+   if(cur_user){
+    // console.log(cur_user.id)
+      if(cur_user.password === password){
+            alert("login success")
+            setCount(!count);
+            navigate("/")
+            sessionStorage.setItem("userdetail",JSON.stringify(cur_user));
+            sessionStorage.setItem("isAuth",true);
+            window.location.reload();
+            
+      }else{
+        alert("wrong password")
+      }
+   }else{
+      alert("please register first");
+      navigate("/signup")
+   }
 
     setEmail("");
     setPassword("");
   }
+ 
   
   return (
     <div>

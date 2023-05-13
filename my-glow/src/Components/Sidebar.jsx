@@ -27,13 +27,11 @@ const Sidebar = () => {
   const [searchparam, setSearchparam] = useSearchParams();
   const initialCategory = searchparam.getAll("category");
   const initialBrand = searchparam.getAll("brand");
-  const initialPriceFilter = searchparam.getAll("price");
   const initialOrder = searchparam.get("order");
 
   const [category, setCategory] = useState(initialCategory || []);
   const [brand, setBrand] = useState(initialBrand || []);
-  const [order, setOrder] = useState(initialOrder || "");
-  const [priceFilter,setPriceFilter] = useState(initialPriceFilter || []);
+  const [order, setOrder] = useState(initialOrder  || "");
 
   const handleCategory = (e) => {
     let newCategory = [...category];
@@ -69,37 +67,24 @@ const Sidebar = () => {
     //  console.log(brand);
   };
 
-  const handlePrice = (e) => {
-  // console.log(e.target.value);
-  let newPriceFilter = [...priceFilter];
 
-    const value = e.target.value;
-
-    if (newPriceFilter.includes(value)) {
-      newPriceFilter = newPriceFilter.filter((el) => {
-        return el <= value;
-      });
-    } else {
-      newPriceFilter.push(value);
-    }
-    setPriceFilter(newPriceFilter);
-
-    // console.log(category);
-  };
 
   const handleSortingPrice = (e) => {
+    // console.log(e.target.value);
     setOrder(e.target.value);
   };
+
+ 
 
   useEffect(() => {
     let params = {
       category,
       brand,
-      priceFilter,
     };
-    // order && (params.order = order);
+    order && (params.order = order);
+
     setSearchparam(params);
-  }, [category, brand,priceFilter]);
+  }, [category, brand,order]);
 
   return (
     <Box
@@ -218,23 +203,23 @@ const Sidebar = () => {
             <h2>
               <AccordionButton>
                 <Box as="span" flex="1" textAlign="left">
-                  <Text fontSize={"xl"}>Price</Text>
+                  <Text fontSize={"xl"}>Discount</Text>
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              <Text _hover={p1} className="price">
-                <input type="checkbox" value="below500" onChange={(e)=>handlePrice(e)} /> Below 500
+              <Text _hover={p1} className="discount">
+                <input type="checkbox" value="below10"  /> below 10%
               </Text>
-              <Text _hover={p1} className="price">
-                <input type="checkbox" value="500-1000" onChange={(e)=>handlePrice(e)} /> 500-1000
+              <Text _hover={p1} className="discount">
+                <input type="checkbox" value="20-30"  /> 20-30%
               </Text>
-              <Text _hover={p1} className="price">
-                <input type="checkbox" value="1000-2000" onChange={(e)=>handlePrice(e)} /> 1000-2000
+              <Text _hover={p1} className="discount">
+                <input type="checkbox" value="30-40"  /> 30-40%
               </Text>
-              <Text _hover={p1} className="price">
-                <input type="checkbox" value="above2000" onChange={(e)=>handlePrice(e)} /> Above 2000
+              <Text _hover={p1} className="discount">
+                <input type="checkbox" value="above40"  /> 40% above
               </Text>
             </AccordionPanel>
           </AccordionItem>
@@ -291,63 +276,18 @@ const Sidebar = () => {
             </h2>
             <AccordionPanel pb={4} onChange={handleSortingPrice}>
               <Text _hover={p1} className="priceSorting">
-                <input type="radio" name="order" value="" /> None
+                <input type="radio" name="order" value="" defaultChecked={order===""}/> None
               </Text>
               <Text _hover={p1} className="priceSorting">
-                <input type="radio" name="order" value="asc" /> Low To High
+                <input type="radio" name="order" value="asc" defaultChecked={order==="asc"}/> Low To High
               </Text>
               <Text _hover={p1} className="priceSorting">
-                <input type="radio" name="order" value="desc" /> High To Low
+                <input type="radio" name="order" value="desc" defaultChecked={order==="desc"}/> High To Low
               </Text>
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
-        <Accordion allowMultiple>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box as="span" flex="1" textAlign="left">
-                  <Text fontSize={"xl"}>Discount</Text>
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              <Text _hover={p1} className="discountSorting">
-                <input type="radio" name="order" value="" /> None
-              </Text>
-              <Text _hover={p1} className="discountSorting">
-                <input type="radio" name="order" value="asc" /> Low To High
-              </Text>
-              <Text _hover={p1} className="discountSorting">
-                <input type="radio" name="order" value="desc" /> High To Low
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-        <Accordion allowMultiple>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box as="span" flex="1" textAlign="left">
-                  <Text fontSize={"xl"}>Rating</Text>
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              <Text _hover={p1} className="discountSorting">
-                <input type="radio" name="order" value="" /> None
-              </Text>
-              <Text _hover={p1} className="discountSorting">
-                <input type="radio" name="order" value="asc" /> Low To High
-              </Text>
-              <Text _hover={p1} className="discountSorting">
-                <input type="radio" name="order" value="desc" /> High To Low
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
+        
       </Box>
     </Box>
   );

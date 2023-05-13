@@ -41,8 +41,8 @@ const Products = () => {
       category:searchParam.getAll("category"),
       brand:searchParam.getAll("brand"),
       price:searchParam.getAll("price"),
-      // sort:searchParam.get("price") && "price",
-      // _order:searchParam.get("order"),
+      _sort:searchParam.get("order") && "price",
+      _order:searchParam.get("order"),
     }
   }
 
