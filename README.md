@@ -39,11 +39,7 @@ Presentation Video :- https://drive.google.com/file/d/1fQtvc4raGNnVuDxNf9FtLBiN_
 
 
 
-<h2>Login Credentials</h2>
 
-email :- eve.holt@reqres.in
-<br/>
-password :- myglow
 
 <Img src="https://in.sugarcosmetics.com/_next/image?url=https://d32baadbbpueqt.cloudfront.net/Homepage/0533d215-072d-46a6-a126-656aa10580fb.jpg&w=1920&q=75" />
 
