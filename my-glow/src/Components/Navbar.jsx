@@ -43,7 +43,7 @@ const Navbar = () => {
             <Flex>
               <Text
                 className="login-hov"
-                padding={"5px"}
+                padding={".5rem"}
                 fontSize={"md"}
                 fontWeight={"bold"}
               >
@@ -61,7 +61,7 @@ const Navbar = () => {
               </Button>
             </Flex>
           ) : (
-            <Link to="/login">Login/Register</Link>
+            <Link to="/login" className="loginRegister">Login/Register</Link>
           )}
           <Link to="/cart">
             <IoBagHandle className="hov ic" size={"40px"} />
@@ -105,7 +105,7 @@ const Navbar = () => {
             <Link to="/product">BESTSELLERS</Link>
           </li>
           <li>
-            <Link to="/products">NEW LAUNCHES</Link>
+            <Link to="/product">NEW LAUNCHES</Link>
           </li>
           <li>
             <Link to="/product">OFFERS</Link>

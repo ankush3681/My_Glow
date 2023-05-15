@@ -1,6 +1,7 @@
 // // Saurabh
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import "./Login.css";
 
 import {
   Button,
@@ -13,7 +14,8 @@ import {
   Stack,
   Image,
   Box,
-  useToast
+  useToast,
+  Center
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -50,14 +52,6 @@ const Login = () => {
     email,password
   }
 
-
-
- 
-
-
-
-  
-
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
@@ -88,18 +82,19 @@ const Login = () => {
   return (
     <div>
       <Navbar />
+      <Box className="login_container" bg={"black"}>
+    <Center><Heading color={"white"} mt="3%">Login Page</Heading></Center>
 
-      <h1>Signup page</h1>
-
-      <Flex bg={"black"}>
-        <Box>
+      <Flex >
+        <Box  w="40%" m="auto"  p="2rem 1rem">
           <form onSubmit={handleLoginSubmit}>
             <Box>
-              <FormControl ml={"30%"} mt={"100px"}>
+              <FormControl>
                 <FormLabel color={"white"}>Email address</FormLabel>
                 <Input
                   color={"#e8f0fe"}
-                  w={"200%"}
+                  w={"90%"}
+                  m="auto"
                   border={"2px solid gray"}
                   onChange={(e)=>setEmail(e.target.value)}
                   required
@@ -112,7 +107,8 @@ const Login = () => {
                 <br />
                 <FormLabel color={"white"}>Email Password</FormLabel>
                 <Input
-                  w={"200%"}
+                  w={"90%"}
+                  m="auto"
                   border={"2px solid gray"}
                   color={"#e8f0fe"}
                   onChange={(e)=>setPassword(e.target.value)}
@@ -126,10 +122,10 @@ const Login = () => {
               <br />
 
               <Button
-                ml={"30%"}
                 colorScheme="blue"
                 type="submit"
-                w={"200%"}
+                w={"90%"}
+                m="auto"
                 border={"2px solid gray"}
               >
                 Submit
@@ -139,7 +135,6 @@ const Login = () => {
               <p
                 style={{
                   color: "white",
-                  marginLeft: "30%",
                   paddingBottom: "10px",
                 }}
               >
@@ -147,10 +142,10 @@ const Login = () => {
               </p>
               <Link to="/signup">
                 <Button
-                  ml={"30%"}
                   colorScheme="blue"
                   type="submit"
-                  w={"200%"}
+                  w={"90%"}
+                  m="auto"
                   border={"2px solid gray"}
                 >
                   Sign UP
@@ -161,16 +156,15 @@ const Login = () => {
             </Box>
           </form>
         </Box>
-        <Box>
+        <Box className="loginImage" w="50%" h="80%">
           <Image
             src={"https://media.sugarcosmetics.com/upload/authSIe2.jpg"}
-            h={"50%"}
-            ml={"45%"}
+            w={"50%"}
           />
           {/* <Image src={"http://localhost:3000/static/media/logo3my.6318ea5f18dd4fcbda03.jpg"} h={'3%'} ml={'65%'} mb={'10%'}/> */}
         </Box>
       </Flex>
-
+      </Box>
     </div>
   );
 };
