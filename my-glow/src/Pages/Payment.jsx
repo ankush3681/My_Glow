@@ -5,6 +5,9 @@ import {
   Stack, Flex, FormControl, FormLabel, Image, Input, Text, useToast, Select
 } from "@chakra-ui/react"
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
+
 
 
 // const order = [
@@ -23,6 +26,9 @@ function Payment() {
   const [OTP, setOTP] = useState("")
   const [enteredotp, setEnteredOtp] = useState("")
   const [paymentOption, setPaymentOption] = useState('debit-card');
+
+  let { cartItems } = useSelector((store) => (store.cartReducer));
+  console.log('Payment:', cartItems)
 
   const handlePaymentOptionChange = (value) => {
     setPaymentOption(value);
@@ -44,6 +50,9 @@ const handleCOD=()=>{
         duration: 1000,
         isClosable: true,
       });
+cartItems=[];
+window.location.reload();
+
 }
 
   const handlePaymentSubmit = (event) => {
@@ -201,7 +210,7 @@ const handleCOD=()=>{
                     </Text>
                   </Radio>
                   <Radio
-                    colorScheme='yellow'
+                    colorScheme='pink'
                     value="cash">
                     Cash on Delivery
                     <br />
