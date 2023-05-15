@@ -5,11 +5,12 @@ import {
   Stack, Flex, FormControl, FormLabel, Image, Input, Text, useToast, Select
 } from "@chakra-ui/react"
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 
-// const order = [
 
-// ]
+
+
 const initialState = {
   cardno: "",
   ExpiringDate: "",
@@ -23,6 +24,9 @@ function Payment() {
   const [OTP, setOTP] = useState("")
   const [enteredotp, setEnteredOtp] = useState("")
   const [paymentOption, setPaymentOption] = useState('debit-card');
+
+  let { cartItems } = useSelector((store) => (store.cartReducer));
+  console.log('Payment:', cartItems)
 
   const handlePaymentOptionChange = (value) => {
     setPaymentOption(value);
@@ -44,6 +48,9 @@ const handleCOD=()=>{
         duration: 1000,
         isClosable: true,
       });
+cartItems=[];
+window.location.reload();
+
 }
 
   const handlePaymentSubmit = (event) => {
@@ -201,7 +208,7 @@ const handleCOD=()=>{
                     </Text>
                   </Radio>
                   <Radio
-                    colorScheme='yellow'
+                    colorScheme='pink'
                     value="cash">
                     Cash on Delivery
                     <br />
@@ -219,7 +226,7 @@ const handleCOD=()=>{
                   width={{ base: "100%", sm: "100%", md: "100%", lg: "60%" }}
                   textAlign={"center"} >
                   <Box >
-                    <FormControl>
+                    <FormCon<<<<<<< fw21_0422_day-2
                       <FormLabel for="ccn">Card number</FormLabel>
                       <Input type='tel' _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
                         onChange={handleChange}
@@ -228,16 +235,21 @@ const handleCOD=()=>{
                        minLength={16}
                         maxLength={16}
                         inputmode='numeric' />
+
                     </FormControl>
                     <FormControl>
                       <FormLabel>Expiration date</FormLabel>
                       <Input type='date' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
+
                         name="ExpiringDate" />
+
                     </FormControl>
                     <FormControl>
                       <FormLabel>CVV</FormLabel>
                       <Input type="password" _focus={{ border: "1px solid #cea464" }} placeholder="Enter CVV" value={data.cvv} onChange={handleChange}
+
                         name="cvv"  maxLength={3}/>
+
                     </FormControl>
                     <Button bgColor="#df9018"
                       _hover={{ bgColor: "#f89f17" }}
@@ -250,7 +262,7 @@ const handleCOD=()=>{
 
                     {carddetails !== "" ?
                       <FormControl>
-                        <Input type='number' placeholder='Enter your Otp' value={enteredotp} onChange={(e) => setEnteredOtp(e.target.value)} />
+                        <Input type='number' placeholder='Enter your Otp' value={enteredotp} onChange={(e) => setEnteredOtp(e.target.value)} required/>
                         <Button bgColor="#df9018"
                           _hover={{ bgColor: "#f89f17" }}
                           color="white"
@@ -273,7 +285,7 @@ const handleCOD=()=>{
                   <Box>
                     <FormControl>
                       <FormLabel>Your UPI ID</FormLabel>
-                      <Input _focus={{ border: "1px solid #cea464" }} placeholder="Enter your UPI ID" />
+                      <Input _focus={{ border: "1px solid #cea464" }} placeholder="Enter your UPI ID" type='email' pattern='^[\w.-]+@[\w.-]+$'/>
                     </FormControl>
                     <Button bgColor="#df9018"
                       _hover={{ bgColor: "#f89f17" }}

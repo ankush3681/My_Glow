@@ -27,11 +27,13 @@ const Sidebar = () => {
   const [searchparam, setSearchparam] = useSearchParams();
   const initialCategory = searchparam.getAll("category");
   const initialBrand = searchparam.getAll("brand");
+  const initialDiscount = searchparam.getAll("discount_gte");
   const initialOrder = searchparam.get("order");
 
   const [category, setCategory] = useState(initialCategory || []);
   const [brand, setBrand] = useState(initialBrand || []);
-  const [order, setOrder] = useState(initialOrder  || "");
+  const [order, setOrder] = useState(initialOrder || "");
+  const [discount_gte, setDiscount] = useState(initialDiscount || "");
 
   const handleCategory = (e) => {
     let newCategory = [...category];
@@ -67,24 +69,38 @@ const Sidebar = () => {
     //  console.log(brand);
   };
 
-
-
   const handleSortingPrice = (e) => {
     // console.log(e.target.value);
     setOrder(e.target.value);
   };
 
- 
+  const handleDiscount = (e) => {
+    let newDiscount = [...discount_gte];
+
+    const value = e.target.value;
+
+    if (newDiscount.includes(value)) {
+      newDiscount = newDiscount.filter((el) => {
+        return el !== value;
+      });
+    } else {
+      newDiscount.push(value);
+    }
+    setDiscount(newDiscount);
+
+    //  console.log(discount_gte);
+  };
 
   useEffect(() => {
     let params = {
       category,
       brand,
+      discount_gte,
     };
     order && (params.order = order);
 
     setSearchparam(params);
-  }, [category, brand,order]);
+  }, [category, brand, order, discount_gte]);
 
   return (
     <Box
@@ -210,16 +226,40 @@ const Sidebar = () => {
             </h2>
             <AccordionPanel pb={4}>
               <Text _hover={p1} className="discount">
-                <input type="checkbox" value="below10"  /> below 10%
+                <input
+                  type="checkbox"
+                  value="40"
+                  onClick={handleDiscount}
+                  checked={discount_gte.includes("40")}
+                />{" "}
+                40% & Above
               </Text>
               <Text _hover={p1} className="discount">
-                <input type="checkbox" value="20-30"  /> 20-30%
+                <input
+                  type="checkbox"
+                  value="30"
+                  onClick={handleDiscount}
+                  checked={discount_gte.includes("30")}
+                />{" "}
+                30% & Above
               </Text>
               <Text _hover={p1} className="discount">
-                <input type="checkbox" value="30-40"  /> 30-40%
+                <input
+                  type="checkbox"
+                  value="20"
+                  onClick={handleDiscount}
+                  checked={discount_gte.includes("20")}
+                />{" "}
+                20% & Above
               </Text>
               <Text _hover={p1} className="discount">
-                <input type="checkbox" value="above40"  /> 40% above
+                <input
+                  type="checkbox"
+                  value="10"
+                  onClick={handleDiscount}
+                  checked={discount_gte.includes("10")}
+                />{" "}
+                10% & Above
               </Text>
             </AccordionPanel>
           </AccordionItem>
@@ -276,18 +316,35 @@ const Sidebar = () => {
             </h2>
             <AccordionPanel pb={4} onChange={handleSortingPrice}>
               <Text _hover={p1} className="priceSorting">
-                <input type="radio" name="order" value="" defaultChecked={order===""}/> None
+                <input
+                  type="radio"
+                  name="order"
+                  value=""
+                  defaultChecked={order === ""}
+                />{" "}
+                None
               </Text>
               <Text _hover={p1} className="priceSorting">
-                <input type="radio" name="order" value="asc" defaultChecked={order==="asc"}/> Low To High
+                <input
+                  type="radio"
+                  name="order"
+                  value="asc"
+                  defaultChecked={order === "asc"}
+                />{" "}
+                Low To High
               </Text>
               <Text _hover={p1} className="priceSorting">
-                <input type="radio" name="order" value="desc" defaultChecked={order==="desc"}/> High To Low
+                <input
+                  type="radio"
+                  name="order"
+                  value="desc"
+                  defaultChecked={order === "desc"}
+                />{" "}
+                High To Low
               </Text>
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
-        
       </Box>
     </Box>
   );

@@ -1,7 +1,5 @@
-// // Saurabh
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import "./Login.css";
 
 import {
   Button,
@@ -14,12 +12,12 @@ import {
   Stack,
   Image,
   Box,
-  useToast,
-  Center
+  useToast
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import {  useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { adminLogin } from "../Redux/adminAuthRedux/action";
 
 const inputform = {
   fontFamily: "Arial",
@@ -32,69 +30,64 @@ const mystyle = {
   marginBottom: "200px",
 };
 
-const Login = () => {
+const AdminLogin = () => {
 
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
-  const [count,setCount] = useState(true);
+  const dispatch = useDispatch();
   const toast = useToast()
   const navigate = useNavigate();
   const location = useLocation();
 
-  const users = useSelector((state)=>{
-    // console.log(state);
-    return state.signupReducer.users;
-  })
-
-  // console.log(users)
-  
   const userDetail = {
     email,password
   }
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-
-    const cur_user = users.find((ele)=> ele.email === email);
-   if(cur_user){
-    // console.log(cur_user.id)
-      if(cur_user.password === password){
-            alert("login success")
-            setCount(!count);
-            navigate("/")
-            sessionStorage.setItem("userdetail",JSON.stringify(cur_user));
-            sessionStorage.setItem("isAuth",true);
-            window.location.reload();
-            
-      }else{
-        alert("wrong password")
-      }
-   }else{
-      alert("please register first");
-      navigate("/signup")
-   }
+     
+    dispatch(adminLogin(userDetail))
+    .then((res)=>{
+    
+        console.log(location.state)
+     location.state ? navigate(location.state) : navigate("/");
+    toast({
+      title: 'Login Success.',
+      description: "Welcome to My Glow.",
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })        
+    })
+    .catch(()=>{
+      toast({
+        title: 'Wrong Credential.',
+        description: "Please Try again to Login.",
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      })        
+    })
 
     setEmail("");
     setPassword("");
   }
- 
   
   return (
     <div>
       <Navbar />
-      <Box className="login_container" bg={"black"}>
-    <Center><Heading color={"white"} mt="3%">Login Page</Heading></Center>
 
-      <Flex >
-        <Box  w="40%" m="auto"  p="2rem 1rem">
+      <h1 color="white">Admin Login</h1>
+
+      <Flex bg={"black"}>
+        <Box>
           <form onSubmit={handleLoginSubmit}>
             <Box>
-              <FormControl>
+              <FormControl ml={"30%"} mt={"100px"}>
                 <FormLabel color={"white"}>Email address</FormLabel>
                 <Input
                   color={"#e8f0fe"}
-                  w={"90%"}
-                  m="auto"
+                  w={"200%"}
                   border={"2px solid gray"}
                   onChange={(e)=>setEmail(e.target.value)}
                   required
@@ -107,8 +100,7 @@ const Login = () => {
                 <br />
                 <FormLabel color={"white"}>Email Password</FormLabel>
                 <Input
-                  w={"90%"}
-                  m="auto"
+                  w={"200%"}
                   border={"2px solid gray"}
                   color={"#e8f0fe"}
                   onChange={(e)=>setPassword(e.target.value)}
@@ -122,10 +114,10 @@ const Login = () => {
               <br />
 
               <Button
+                ml={"30%"}
                 colorScheme="blue"
                 type="submit"
-                w={"90%"}
-                m="auto"
+                w={"200%"}
                 border={"2px solid gray"}
               >
                 Submit
@@ -135,6 +127,7 @@ const Login = () => {
               <p
                 style={{
                   color: "white",
+                  marginLeft: "30%",
                   paddingBottom: "10px",
                 }}
               >
@@ -142,13 +135,13 @@ const Login = () => {
               </p>
               <Link to="/signup">
                 <Button
+                  ml={"30%"}
                   colorScheme="blue"
                   type="submit"
-                  w={"90%"}
-                  m="auto"
+                  w={"200%"}
                   border={"2px solid gray"}
                 >
-                  Sign UP
+                  Sign up
                 </Button>
               </Link>
 
@@ -156,17 +149,18 @@ const Login = () => {
             </Box>
           </form>
         </Box>
-        <Box className="loginImage" w="50%" h="80%">
+        <Box>
           <Image
             src={"https://media.sugarcosmetics.com/upload/authSIe2.jpg"}
-            w={"50%"}
+            h={"50%"}
+            ml={"45%"}
           />
           {/* <Image src={"http://localhost:3000/static/media/logo3my.6318ea5f18dd4fcbda03.jpg"} h={'3%'} ml={'65%'} mb={'10%'}/> */}
         </Box>
       </Flex>
-      </Box>
+  
     </div>
   );
 };
 
-export default Login;
+export default AdminLogin;

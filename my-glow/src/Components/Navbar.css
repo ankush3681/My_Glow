@@ -21,6 +21,12 @@
 .login-hov:hover{
     background-color: #E11299;
 }
+
+.loginRegister{
+font-size:large;
+}
+
+
 .search-box1{
     border: 1px solid black;
     width: 40%;

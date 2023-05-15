@@ -1,0 +1,22 @@
+
+.login_container{
+    margin-top: 6%;
+}
+
+.heading{
+    margin-top: 4%; 
+    color:white;
+ }
+
+ .loginImage{
+
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .heading{
+        color:red;
+    }
+}
+ 
