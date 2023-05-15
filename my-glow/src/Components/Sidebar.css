@@ -13,6 +13,13 @@
   text-align:left;
 }
 
+
+.discount{
+ padding:1%;
+ border-bottom: 1px dotted pink;   font-size:xl;
+  text-align:left;
+}
+
 .rating{
  padding:1%;
  border-bottom: 1px dotted pink;   font-size:xl;

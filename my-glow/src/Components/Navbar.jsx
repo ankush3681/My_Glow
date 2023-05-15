@@ -1,26 +1,30 @@
-import { Box, Stack } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import "./Navbar.css";
-import img1 from "../images/my-glow-logo.jpg";
 import img2 from "../images/logo3my.jpg";
-import img3 from "../images/logo4my.jpg";
 import { BsSearch, BsHandbagFill, BsPersonCircle } from "react-icons/bs";
-import { IoPersonCircleOutline ,IoBagHandle } from "react-icons/io5";
-import { Show, Hide ,Text} from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { IoPersonCircleOutline, IoBagHandle } from "react-icons/io5";
 
 const Navbar = () => {
+  const navigate = useNavigate();
 
-  const {isAuth} = useSelector((state)=> state.authReducer);
+  const isAuth = sessionStorage.getItem("isAuth");
+  const userDetail = JSON.parse(sessionStorage.getItem("userdetail"));
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("isAuth");
+    navigate("/login");
+  };
   return (
     <Box>
       <Box className="f-nav mob-nav">
         <Box className="logobox">
           {" "}
-          <Link to='/'> <img  src={img2} className="logocss" alt="" /></Link>
-         
+          <Link to="/">
+            {" "}
+            <img src={img2} className="logocss" alt="" />
+          </Link>
         </Box>
 
         <Box className="search-box1 hov">
@@ -35,13 +39,32 @@ const Navbar = () => {
         </Box>
 
         <Box className="icon-box ">
-          <Link to="/login"><Text className="login-hov" padding={"5px"} fontSize={'md'} fontWeight={'bold'} >{isAuth ? "Ankush" : "Login/Register" }</Text></Link>
+          {isAuth ? (
+            <Flex>
+              <Text
+                className="login-hov"
+                padding={"5px"}
+                fontSize={"md"}
+                fontWeight={"bold"}
+              >
+                {userDetail.firstName}
+              </Text>{" "}
+              <Button
+                className="login-hov"
+                padding={"5px"}
+                fontSize={"md"}
+                fontWeight={"bold"}
+                bgColor={"#E11299"}
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            </Flex>
+          ) : (
+            <Link to="/login">Login/Register</Link>
+          )}
           <Link to="/cart">
-            {/* <img
-              src="https://img.icons8.com/material-sharp/2x/shopping-cart.png"
-              alt="cart"
-            /> */}
-            <IoBagHandle className="hov ic" size={'40px'}/>
+            <IoBagHandle className="hov ic" size={"40px"} />
           </Link>
           <Link to="/admin">
             {" "}
@@ -50,11 +73,11 @@ const Navbar = () => {
               src="https://static.vecteezy.com/system/resources/previews/009/636/683/original/admin-3d-illustration-icon-png.png"
               alt="admin"
             /> */}
-            <IoPersonCircleOutline className="hov ic" size={'40px'} />
+            <IoPersonCircleOutline className="hov ic" size={"40px"} />
           </Link>
         </Box>
       </Box>
-      
+
       <Box className="s-nav mob-nav">
         <ul>
           <li>

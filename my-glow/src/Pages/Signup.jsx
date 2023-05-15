@@ -1,7 +1,6 @@
-// // Saurabh
 import Navbar from "../Components/Navbar";
-import { Link } from "react-router-dom";
-import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -11,29 +10,54 @@ import {
   Input,
   Button,
   Flex,
-  Center,
+  useToast,
   Image,
 } from "@chakra-ui/react";
-import { SiLinkedin } from "react-icons/si";
+import { useDispatch, useSelector } from "react-redux";
+import { postsignup } from "../Redux/SignupRedux/action";
+
+const initialData = {
+  firstname: "",
+  lastname: "",
+  email: "",
+  password: "",
+}
 
 const Signup = () => {
-  const [loginUser, setLoginUser] = React.useState({
-    email: "",
-    password: "",
-    name: "",
-  });
-  const verfiyform = async (e) => {
+  
+  const [firstName,setFirstName] = useState("");
+  const [lastName,setLastName] = useState("");
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const navigate = useNavigate();
+
+  const userDetail = {
+    firstName,lastName,email,password
+  }
+
+  const users = useSelector((state)=>{
+    return state.signupReducer.users;
+  })
+
+  // console.log(users)
+
+  const Submitform =  (e) => {
     e.preventDefault();
-    try {
-      await fetch(`https://api-ak.vercel.app/users`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(loginUser),
+    console.log(userDetail)
+    dispatch(postsignup(userDetail))
+    .then((res)=>{
+      toast({
+        position: "top",
+        title: "Signup Successfull.",
+        description: "User registered,You can login now",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
       });
-      alert("Signup successful");
-    } catch (error) {
-      console.log("error ", error);
-    }
+      navigate("/login");
+    })
   };
   return (
     <div>
@@ -43,16 +67,46 @@ const Signup = () => {
 
       <Flex bg={"black"}>
         <Box>
-          <form onSubmit={verfiyform}>
+          <form onSubmit={Submitform}>
             <Box>
               <FormControl ml={"30%"} mt={"100px"}>
+                <FormLabel color={"white"}>Enter First Name</FormLabel>
+                <Input
+                  color={"#e8f0fe"}
+                  w={"200%"}
+                  border={"2px solid gray"}
+                  onChange={(e) =>
+                    setFirstName(e.target.value )
+                  }
+                  required
+                  type="text"
+                  name="firstname"
+                  placeholder="Enter First Name"
+                />
+                <br />
+                <br />
+                <FormLabel color={"white"}>Enter Last Name</FormLabel>
+                <Input
+                  color={"#e8f0fe"}
+                  w={"200%"}
+                  border={"2px solid gray"}
+                  onChange={(e) =>
+                    setLastName(e.target.value )
+                  }
+                  required
+                  type="text"
+                  name="email"
+                  placeholder="Enter Last Name"
+                />
+                <br />
+                <br />
                 <FormLabel color={"white"}>Email address</FormLabel>
                 <Input
                   color={"#e8f0fe"}
                   w={"200%"}
                   border={"2px solid gray"}
                   onChange={(e) =>
-                    setLoginUser({ ...loginUser, email: e.target.value })
+                    setEmail(e.target.value )
                   }
                   required
                   type="email"
@@ -67,7 +121,7 @@ const Signup = () => {
                   border={"2px solid gray"}
                   color={"#e8f0fe"}
                   onChange={(e) =>
-                    setLoginUser({ ...loginUser, password: e.target.value })
+                    setPassword(e.target.value )
                   }
                   required
                   type="password"
