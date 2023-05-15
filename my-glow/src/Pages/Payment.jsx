@@ -220,20 +220,24 @@ const handleCOD=()=>{
                   textAlign={"center"} >
                   <Box >
                     <FormControl>
-                      <FormLabel>Card number</FormLabel>
-                      <Input type='number' _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
+                      <FormLabel for="ccn">Card number</FormLabel>
+                      <Input type='tel' _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
                         onChange={handleChange}
-                        name="cardno" />
+                        name="cardno"
+                        pattern="[0-9\s]{13,19}"
+                       minLength={16}
+                        maxLength={16}
+                        inputmode='numeric' />
                     </FormControl>
                     <FormControl>
                       <FormLabel>Expiration date</FormLabel>
-                      <Input type='month' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
+                      <Input type='date' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
                         name="ExpiringDate" />
                     </FormControl>
                     <FormControl>
                       <FormLabel>CVV</FormLabel>
                       <Input type="password" _focus={{ border: "1px solid #cea464" }} placeholder="Enter CVV" value={data.cvv} onChange={handleChange}
-                        name="cvv" />
+                        name="cvv"  maxLength={3}/>
                     </FormControl>
                     <Button bgColor="#df9018"
                       _hover={{ bgColor: "#f89f17" }}

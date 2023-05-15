@@ -24,6 +24,7 @@ function Address() {
 console.log(formData);
   const haddleSubmit = (e) => {
     e.preventDefault();
+    navigate("/payment")
   console.log("hai");
 
   
@@ -54,23 +55,33 @@ console.log(formData);
                   name="name"
                   onChange={handleChange}
                   placeholder="Full Name"
+                  required
                 />
                 <input
-                  type="number"
+                  type="tel"
                   name="number"
                   onChange={handleChange}
                   placeholder="phone number"
+                
+                  pattern="[0-9\s]{10,10}"
+                  minLength={10}
+                   maxLength={10}
+                   inputmode='numeric'
+               
+                  required
                 />
               </div>
               <div>
                 <input
-                  type="number"
+                  type="text"
                   name="flatNumber"
                   placeholder="Flat Number"
                   onChange={handleChange}
+                  maxlength={"4"}
+                  required
                 />
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   onChange={handleChange}
                   placeholder="Email Id"
@@ -82,14 +93,20 @@ console.log(formData);
                   name="address"
                   placeholder="Apartment Address"
                   onChange={handleChange}
+                  required
                 />
                 <div>
                   <input
                     className={styles.special}
-                    type="number"
+                    type="tel"
                     name="pincode"
                     placeholder="Zipcode/ Pincode"
+                    pattern="[0-9\s]{6,6}"
+                    minLength={6}
+                     maxLength={6}
+                     inputmode='numeric'
                     onChange={handleChange}
+                    required
                   />
                   <button className={styles.details}>Get Details</button>
                 </div>
@@ -102,6 +119,7 @@ console.log(formData);
                   name="state"
                   onChange={handleChange}
                   placeholder="State/ Province"
+                  required
                 />
               </div>
               <div>
@@ -110,6 +128,7 @@ console.log(formData);
                   onChange={handleChange}
                   name="city"
                   placeholder="City"
+                  required
                 />
               </div>
               <div>
@@ -118,6 +137,7 @@ console.log(formData);
                   onChange={handleChange}
                   name="country"
                   placeholder="Country"
+                  required
                 />{" "}
               </div>
             </div>
@@ -126,11 +146,11 @@ console.log(formData);
                 <button className={styles.cancel}>Cancel</button>
               </div>
               <div >
-                <Link to='/payment'> <input
+                <input
                   type="submit"
                   className={styles.save}
                   value="Save and Payment"
-                /></Link>
+                />
                 
               </div>
             </div>
