@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { postLogin } from "../Redux/AuthRedux/action";
 import { useDispatch } from "react-redux";
 import { adminLogin } from "../Redux/adminAuthRedux/action";
 
