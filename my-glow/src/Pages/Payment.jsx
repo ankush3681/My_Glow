@@ -226,22 +226,30 @@ window.location.reload();
                   width={{ base: "100%", sm: "100%", md: "100%", lg: "60%" }}
                   textAlign={"center"} >
                   <Box >
-                    <FormControl>
-                      <FormLabel>Card number</FormLabel>
-                      <Input  _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
+                    <FormCon<<<<<<< fw21_0422_day-2
+                      <FormLabel for="ccn">Card number</FormLabel>
+                      <Input type='tel' _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
                         onChange={handleChange}
                         name="cardno"
-                        type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" />
+                        pattern="[0-9\s]{13,19}"
+                       minLength={16}
+                        maxLength={16}
+                        inputmode='numeric' />
+
                     </FormControl>
                     <FormControl>
                       <FormLabel>Expiration date</FormLabel>
                       <Input type='date' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
-                        name="ExpiringDate"  required />
+
+                        name="ExpiringDate" />
+
                     </FormControl>
                     <FormControl>
                       <FormLabel>CVV</FormLabel>
                       <Input type="password" _focus={{ border: "1px solid #cea464" }} placeholder="Enter CVV" value={data.cvv} onChange={handleChange}
-                        name="cvv" minLength={"3"} maxLength={"3"} required />
+
+                        name="cvv"  maxLength={3}/>
+
                     </FormControl>
                     <Button bgColor="#df9018"
                       _hover={{ bgColor: "#f89f17" }}
