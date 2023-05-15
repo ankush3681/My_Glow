@@ -10,9 +10,7 @@ import { useSelector } from 'react-redux';
 
 
 
-// const order = [
 
-// ]
 const initialState = {
   cardno: "",
   ExpiringDate: "",
