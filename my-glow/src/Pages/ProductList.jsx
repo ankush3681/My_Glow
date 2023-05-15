@@ -41,6 +41,7 @@ const Products = () => {
       category:searchParam.getAll("category"),
       brand:searchParam.getAll("brand"),
       price:searchParam.getAll("price"),
+      discount_gte:searchParam.getAll("discount_gte"),
       _sort:searchParam.get("order") && "price",
       _order:searchParam.get("order"),
     }
@@ -57,7 +58,11 @@ const Products = () => {
       <Center color="red" mb={"5%"}>
         <Heading>Glow with my glow</Heading>
       </Center>
-      <Grid templateColumns="repeat(3, 1fr)" gap={10}>
+      <Grid templateColumns={{
+        xl:"repeat(3,1fr)",
+        md:"repeat(2,1fr)",
+        base:"repeat(1,1fr)",
+      }} gap={10}>
         {products.length !== 0 &&
           products.map((item) => {
             return (
