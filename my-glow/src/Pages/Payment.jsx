@@ -226,7 +226,6 @@ window.location.reload();
                   width={{ base: "100%", sm: "100%", md: "100%", lg: "60%" }}
                   textAlign={"center"} >
                   <Box >
-                    <FormCon<<<<<<< fw21_0422_day-2
                       <FormLabel for="ccn">Card number</FormLabel>
                       <Input type='tel' _focus={{ border: "1px solid #cea464" }} placeholder="Enter card number" value={data.cardno}
                         onChange={handleChange}
@@ -236,7 +235,7 @@ window.location.reload();
                         maxLength={16}
                         inputmode='numeric' />
 
-                    </FormControl>
+  
                     <FormControl>
                       <FormLabel>Expiration date</FormLabel>
                       <Input type='date' _focus={{ border: "1px solid #cea464" }} placeholder="MM/YY" value={data.ExpiringDate} onChange={handleChange}
