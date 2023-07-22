@@ -1,4 +1,4 @@
-import { Box, Heading, Image, Text, Tag, Grid, Button,Flex, Spacer,useToast,Center } from "@chakra-ui/react";
+import { Box, Heading, Image, Text, Tag, Grid, Button,Flex, Spacer,useToast,Center, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link,useSearchParams,useLocation } from "react-router-dom";
@@ -11,8 +11,8 @@ const Products = () => {
     const location = useLocation();
     const [page,setPage] = useState(1);
     const dispatch = useDispatch();
-  const { products } = useSelector((state) => {
-    // console.log(state.productReducer.products);
+  const {isLoading,products } = useSelector((state) => {
+    console.log(state.productReducer.isLoading);
     return state.productReducer;
   });
   const toast = useToast();
@@ -52,6 +52,20 @@ const Products = () => {
   useEffect(() => {
     dispatch(get_products(postObj));
   }, [location.search]);
+  if(isLoading){
+    return <Spinner
+    thickness="4px"
+    mt={"10rem"}
+    ml={"30rem"}
+    textAlign={"center"}
+    justifyContent={"center"}
+    speed="0.65s"
+    emptyColor="gray.200"
+    color="pink.500"
+    size="xl"
+  />
+
+  }
   return (
     <Box w="70%" ml="4rem">
     <Box  >
